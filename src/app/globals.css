@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+:root {
+  --background: #091220;
+  --foreground: #edf3ff;
+  --lavi-ink: #091220;
+  --lavi-paper: #edf3ff;
+  --lavi-sky: #82a7da;
+  --lavi-fog: #cddbf1;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--lavi-ink);
+  --color-accent: var(--lavi-sky);
+  --color-hover: var(--lavi-fog);
+  --font-sans: var(--font-work-sans);
+  --font-serif: var(--font-cormorant);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #091220;
+    --foreground: #edf3ff;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-work-sans), "Segoe UI", sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--lavi-sky) 60%, transparent);
+  color: var(--lavi-ink);
+}

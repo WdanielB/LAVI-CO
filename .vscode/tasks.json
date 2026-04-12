@@ -1,0 +1,19 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Scaffold Next.js",
+			"type": "shell",
+			"command": "npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias \"@/*\" --use-npm --yes",
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "Scaffold Next.js Fixed",
+			"type": "shell",
+			"command": "npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --import-alias '@/*' --use-npm --yes",
+			"isBackground": false,
+			"group": "build"
+		}
+	]
+}
