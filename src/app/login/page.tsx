@@ -12,7 +12,7 @@ export default function LoginPage() {
           initial={{ opacity: 0, y: 24, scale: 0.985 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-2xl rounded-xl border border-white/25 bg-white/10 backdrop-blur-md p-8 xl:p-10 shadow-xl"
+          className="max-w-2xl rounded-xl border border-[var(--primary)]/30 bg-[color:rgba(50,57,82,0.76)] backdrop-blur-md p-8 xl:p-10 shadow-xl"
         >
           <p className="text-xs uppercase tracking-[0.2em] text-hover mb-3">Area de clientes</p>
           <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-4">Acceso seguro</h1>
@@ -24,13 +24,13 @@ export default function LoginPage() {
           <div className="flex flex-wrap gap-4">
             <Link
               href="/evaluacion"
-              className="inline-flex bg-white text-primary px-8 py-3.5 rounded-md shadow-md text-sm font-bold hover:bg-gray-100 transition-colors"
+              className="inline-flex rounded-md border border-[var(--primary)] bg-[var(--primary)] px-8 py-3.5 text-sm font-bold text-[var(--text-primary)] shadow-md transition-colors hover:bg-[color:color-mix(in_oklab,var(--primary)_90%,white_10%)]"
             >
               Ir a evaluacion
             </Link>
             <Link
               href="/comenzar"
-              className="inline-flex border border-white/40 text-white px-8 py-3.5 rounded-md text-sm font-bold hover:bg-white/10 transition-colors"
+              className="inline-flex rounded-md border border-[var(--primary)]/45 bg-[color:rgba(50,57,82,0.55)] px-8 py-3.5 text-sm font-bold text-white hover:bg-[rgba(40,97,129,0.2)] transition-colors"
             >
               Ver proceso de inicio
             </Link>

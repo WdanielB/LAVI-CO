@@ -8,11 +8,34 @@ El proyecto utiliza un sistema de color jerárquico, implementado a lo largo de 
 
 | Nombre Tailwind | Código Hex | Función Visual / Uso |
 | :--- | :--- | :--- |
-| `primary` | `#0F1C30` | Títulos y Footer. Autoridad y máxima legibilidad. |
-| `accent` | `#668DC0` | Botones y Links. Llamado a la acción (fácil de identificar). |
-| `text-main` | `#304A6E` | Texto de Cuerpo. Lectura cómoda y profesional. |
-| `section` | `#C2C6CE` | Fondos de Sección. Estructura y división de contenido. |
-| `hover` | `#C0D0EF` | Detalles / Hover. Suavidad y estados de interacción. |
+| `primary` | `#0B0E14` | Títulos y fondo base. Autoridad y máxima legibilidad. |
+| `secondary` | `#1A1E26` | Superficies, tarjetas y chrome. |
+| `accent` | `#286181` | Botones y links. Llamado a la acción. |
+| `panel` | `#323952` | Bloques de apoyo y separación visual. |
+| `paper` | `#F3F4F6` | Texto claro y fondos tenues. |
+
+### Arquitectura de color de interfaz (UI/UX)
+
+| Función | HEX | Uso en la interfaz |
+| :--- | :--- | :--- |
+| Fondo base (Body) | `#0B0E14` | Fondo principal de toda la web. |
+| Superficies (Cards) | `#323952` | Tarjetas, contenedores y secciones destacadas. |
+| Acento primario | `#286181` | Botones CTA, links e iconos relevantes. |
+| Texto principal | `#F3F4F6` | Titulares y párrafos sobre fondos oscuros. |
+| Detalle profundo | `#000000` | Sombras, footers y líneas de separación finas. |
+
+### Variables CSS base
+
+```css
+:root {
+    --bg-main: #0b0e14;
+    --bg-surface: #323952;
+    --primary: #286181;
+    --accent-dark: #000000;
+    --text-primary: #f3f4f6;
+    --text-muted: rgba(243, 244, 246, 0.7);
+}
+```
 
 ## 2. El Logo (Identidad inmutable)
 

@@ -32,7 +32,7 @@ export default function PortafolioPage() {
       </section>
 
       <section className="container mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20 pb-12">
-        <div className="rounded-2xl border border-white/25 bg-white/10 backdrop-blur-md p-6 lg:p-8 xl:p-10">
+        <div className="rounded-2xl border border-[var(--primary)]/30 bg-[color:rgba(50,57,82,0.76)] backdrop-blur-md p-6 lg:p-8 xl:p-10">
           <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
             <div className="max-w-2xl">
               <p className="text-xs uppercase tracking-[0.16em] text-white/60 mb-3">Caso destacado automático</p>
@@ -60,7 +60,7 @@ export default function PortafolioPage() {
               </AnimatePresence>
             </div>
 
-            <div className="min-w-[240px] lg:w-[280px] rounded-xl border border-white/20 bg-black/25 p-5">
+            <div className="min-w-[240px] lg:w-[280px] rounded-xl border border-[var(--primary)]/30 bg-[color:rgba(0,0,0,0.34)] p-5">
               <p className="text-xs uppercase tracking-[0.14em] text-white/60 mb-2">Indicador principal</p>
               <AnimatePresence mode="wait">
                 <motion.div
@@ -87,7 +87,9 @@ export default function PortafolioPage() {
                   type="button"
                   onClick={() => setActiveIndex(index)}
                   className={`px-3.5 py-2 rounded-full text-xs font-semibold transition-colors ${
-                    isActive ? "bg-white text-primary" : "bg-white/10 text-white/85 hover:bg-white/20"
+                    isActive
+                      ? "border border-[var(--primary)] bg-[var(--primary)] text-[var(--text-primary)]"
+                      : "bg-[color:rgba(50,57,82,0.55)] text-white/85 hover:bg-[rgba(40,97,129,0.22)]"
                   }`}
                 >
                   {item.company}
@@ -107,7 +109,7 @@ export default function PortafolioPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: index * 0.04 }}
-              className="rounded-xl border border-white/20 bg-white/10 backdrop-blur-md p-6 lg:p-7"
+              className="rounded-xl border border-[var(--primary)]/25 bg-[color:rgba(50,57,82,0.72)] backdrop-blur-md p-6 lg:p-7"
             >
               <p className="text-xs uppercase tracking-[0.14em] text-white/60 mb-3">{item.sector}</p>
               <h2 className="text-2xl lg:text-3xl font-semibold tracking-tight text-white mb-1">{item.company}</h2>
@@ -128,14 +130,14 @@ export default function PortafolioPage() {
           ))}
         </div>
 
-        <div className="mt-12 rounded-xl border border-white/20 bg-black/25 p-6 lg:p-8 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5">
+        <div className="mt-12 rounded-xl border border-[var(--primary)]/30 bg-[color:rgba(0,0,0,0.3)] p-6 lg:p-8 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-5">
           <div>
             <p className="text-xs uppercase tracking-[0.16em] text-white/60 mb-2">Siguiente paso</p>
             <p className="text-xl lg:text-2xl font-semibold text-white">
               Identificamos su caso de mayor impacto y construimos un roadmap ejecutivo.
             </p>
           </div>
-          <Link href="/evaluacion" className="inline-flex bg-white text-primary px-8 py-3.5 rounded-md text-sm font-bold hover:bg-gray-100 transition-colors">
+          <Link href="/evaluacion" className="inline-flex rounded-md border border-[var(--primary)] bg-[var(--primary)] px-8 py-3.5 text-sm font-bold text-[var(--text-primary)] transition-colors hover:bg-[color:color-mix(in_oklab,var(--primary)_90%,white_10%)]">
             Solicitar evaluación inicial
           </Link>
         </div>

@@ -1,36 +1,75 @@
 @import "tailwindcss";
 
 :root {
-  --background: #091220;
-  --foreground: #edf3ff;
-  --lavi-ink: #091220;
-  --lavi-paper: #edf3ff;
-  --lavi-sky: #82a7da;
-  --lavi-fog: #cddbf1;
+  /* Fondos */
+  --bg-main: #0b0e14;
+  --bg-surface: #323952;
+
+  /* Marca */
+  --primary: #286181;
+  --accent-dark: #000000;
+
+  /* Tipografia */
+  --text-primary: #f3f4f6;
+  --text-muted: rgba(243, 244, 246, 0.7);
+
+  /* Compatibilidad con tokens existentes */
+  --background: var(--bg-main);
+  --foreground: var(--text-primary);
+  --lavi-ink: var(--bg-main);
+  --lavi-panel: var(--bg-surface);
+  --lavi-accent: var(--primary);
+  --lavi-paper: var(--text-primary);
+  --lavi-fog: var(--text-muted);
+  --lavi-surface: var(--bg-surface);
+  --font-brand: "COCOMAT Pro", "Cocomat Pro", var(--font-montserrat), "Montserrat", "Segoe UI", sans-serif;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-primary: var(--lavi-ink);
-  --color-accent: var(--lavi-sky);
+  --color-secondary: var(--lavi-panel);
+  --color-accent: var(--lavi-accent);
   --color-hover: var(--lavi-fog);
-  --font-sans: var(--font-work-sans);
-  --font-serif: var(--font-cormorant);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #091220;
-    --foreground: #edf3ff;
-  }
+  --color-surface: var(--lavi-surface);
+  --color-paper: var(--lavi-paper);
+  --color-ink: var(--lavi-ink);
+  --font-sans: var(--font-brand);
+  --font-serif: var(--font-brand);
 }
 
 body {
-  background: var(--background);
+  background:
+    radial-gradient(circle at 14% 10%, color-mix(in oklab, var(--lavi-accent) 20%, transparent), transparent 28%),
+    radial-gradient(circle at 82% 18%, color-mix(in oklab, var(--lavi-panel) 22%, transparent), transparent 24%),
+    linear-gradient(180deg, var(--bg-main) 0%, #121720 54%, #07090d 100%);
   color: var(--foreground);
-  font-family: var(--font-work-sans), "Segoe UI", sans-serif;
+  font-family: var(--font-brand);
   text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+  min-height: 100vh;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  opacity: 0.1;
+  mix-blend-mode: soft-light;
+  background-image:
+    linear-gradient(rgba(243, 244, 246, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(243, 244, 246, 0.04) 1px, transparent 1px);
+  background-size: 26px 26px;
+  mask-image: radial-gradient(circle at center, black, transparent 125%);
+  z-index: 0;
+}
+
+body > * {
+  position: relative;
+  z-index: 1;
 }
 
 .no-scrollbar::-webkit-scrollbar {
@@ -43,6 +82,30 @@ body {
 }
 
 ::selection {
-  background: color-mix(in oklab, var(--lavi-sky) 60%, transparent);
-  color: var(--lavi-ink);
+  background: color-mix(in oklab, var(--lavi-accent) 56%, transparent);
+  color: var(--text-primary);
+}
+
+:focus-visible {
+  outline: 2px solid color-mix(in oklab, var(--lavi-accent) 70%, white 30%);
+  outline-offset: 3px;
+}
+
+html {
+  color-scheme: dark;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html,
+  body {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

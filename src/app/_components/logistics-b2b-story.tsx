@@ -595,7 +595,7 @@ export function LogisticsB2BStory() {
             <div className="js-hero-reveal mt-8 flex flex-wrap gap-3">
               <Link
                 href="/evaluacion"
-                className="js-magnetic inline-flex items-center rounded-full bg-white text-[#061227] px-6 md:px-7 py-3 text-sm font-bold tracking-wide hover:bg-[#e8f2ff] transition-colors"
+                className="js-magnetic inline-flex items-center rounded-full border border-[var(--primary)] bg-[var(--primary)] px-6 md:px-7 py-3 text-sm font-bold tracking-wide text-[var(--text-primary)] shadow-[0_10px_24px_rgba(0,0,0,0.35)] hover:bg-[color:color-mix(in_oklab,var(--primary)_90%,white_10%)] transition-colors"
               >
                 Pedir diagnostico operativo
               </Link>
@@ -635,7 +635,7 @@ export function LogisticsB2BStory() {
               {storyBlocks.map((item) => (
                 <article
                   key={item.title}
-                  className="js-logi-reveal js-stage-card rounded-2xl border border-white/18 bg-white/[0.07] backdrop-blur-md p-5 md:p-7 lg:p-8 transition-colors"
+                  className="js-logi-reveal js-stage-card rounded-2xl border border-[var(--primary)]/25 bg-[color:rgba(50,57,82,0.72)] backdrop-blur-md p-5 md:p-7 lg:p-8 transition-colors"
                 >
                   <p className="text-[11px] md:text-xs uppercase tracking-[0.2em] text-[#cddbf1] mb-3">
                     {item.kicker}
@@ -663,18 +663,18 @@ export function LogisticsB2BStory() {
                 />
               </div>
 
-              <div className="mt-5 rounded-2xl border border-white/18 bg-white/[0.06] p-4 md:p-5">
+              <div className="mt-5 rounded-2xl border border-[var(--primary)]/25 bg-[color:rgba(50,57,82,0.7)] p-4 md:p-5">
                 <p className="text-xs uppercase tracking-[0.18em] text-[#cddbf1] mb-3">Impacto Esperado</p>
                 <div className="grid grid-cols-3 gap-2 md:gap-3 text-center">
-                  <div className="rounded-lg bg-white/[0.06] p-2.5 md:p-3">
+                  <div className="rounded-lg bg-[color:rgba(50,57,82,0.62)] p-2.5 md:p-3">
                     <p className="text-xl md:text-2xl font-bold text-white">-32%</p>
                     <p className="text-[11px] md:text-xs text-white/70 mt-1">incidencias</p>
                   </div>
-                  <div className="rounded-lg bg-white/[0.06] p-2.5 md:p-3">
+                  <div className="rounded-lg bg-[color:rgba(50,57,82,0.62)] p-2.5 md:p-3">
                     <p className="text-xl md:text-2xl font-bold text-white">+24%</p>
                     <p className="text-[11px] md:text-xs text-white/70 mt-1">SLA on-time</p>
                   </div>
-                  <div className="rounded-lg bg-white/[0.06] p-2.5 md:p-3">
+                  <div className="rounded-lg bg-[color:rgba(50,57,82,0.62)] p-2.5 md:p-3">
                     <p className="text-xl md:text-2xl font-bold text-white">-18%</p>
                     <p className="text-[11px] md:text-xs text-white/70 mt-1">costo por viaje</p>
                   </div>
@@ -689,7 +689,7 @@ export function LogisticsB2BStory() {
         </div>
 
         <section className="js-chapter container mx-auto max-w-[1440px] px-5 md:px-10 lg:px-20 pb-16 md:pb-24">
-          <div className="js-logi-reveal rounded-3xl border border-white/20 bg-[linear-gradient(155deg,rgba(230,242,255,0.16),rgba(8,19,36,0.62))] p-6 md:p-8 lg:p-10">
+          <div className="js-logi-reveal rounded-3xl border border-[var(--primary)]/30 bg-[linear-gradient(155deg,rgba(50,57,82,0.74),rgba(8,19,36,0.62))] p-6 md:p-8 lg:p-10">
             <p className="text-xs uppercase tracking-[0.2em] text-[#dceaff] mb-4">Listo para acelerar</p>
             <h3 className="font-serif text-3xl md:text-4xl lg:text-5xl leading-[1.05] tracking-tight max-w-4xl">
               Si tu operacion crece, tu sistema tambien tiene que crecer.
@@ -701,7 +701,7 @@ export function LogisticsB2BStory() {
             <div className="mt-7 flex flex-wrap gap-3">
               <Link
                 href="/comenzar"
-                className="js-magnetic inline-flex items-center rounded-full bg-[#cfe2ff] text-[#061227] px-6 py-3 text-sm md:text-base font-bold hover:bg-white transition-colors"
+                className="js-magnetic inline-flex items-center rounded-full border border-[var(--primary)] bg-[var(--primary)] px-6 py-3 text-sm md:text-base font-bold text-[var(--text-primary)] shadow-[0_10px_24px_rgba(0,0,0,0.35)] hover:bg-[color:color-mix(in_oklab,var(--primary)_90%,white_10%)] transition-colors"
               >
                 Agendar workshop ejecutivo
               </Link>
