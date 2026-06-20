@@ -60,6 +60,16 @@ export const mockResults: MockResult[] = [
     metricLabel: "esfuerzo administrativo",
     maturity: "Nivel de despliegue: Operacion nacional",
   },
+  {
+    company: "Laboratorio Alfa",
+    sector: "Manufactura / I+D",
+    challenge: "Ciclos de desarrollo largos con alto retrabajo en fase de validacion.",
+    solution: "Sistema de gestion de fases I+D con criterios de paso/fallo documentados y trazabilidad completa.",
+    impact: "-52% en tiempo de ciclo desde concepto hasta prototipo validado.",
+    metric: "-52%",
+    metricLabel: "tiempo de ciclo I+D",
+    maturity: "Nivel de despliegue: Produccion piloto",
+  },
 ];
 
 export const mockClientBrands = [

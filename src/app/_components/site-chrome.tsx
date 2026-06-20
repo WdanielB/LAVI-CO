@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import type { ReactNode } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState, type ReactNode } from "react";
 import { usePathname } from "next/navigation";
-import { mockClientBrands, mockHighlights, mockResults } from "../../lib/mock-data";
+import { SiteFooter } from "./site-footer";
 
 type SiteChromeProps = {
   children: ReactNode;
@@ -13,189 +13,180 @@ type SiteChromeProps = {
 
 export function SiteChrome({ children }: SiteChromeProps) {
   const pathname = usePathname();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
     { href: "/work", label: "Casos" },
+    { href: "/portafolio", label: "Impacto" },
     { href: "/services", label: "Servicios" },
     { href: "/logistica", label: "Logística" },
     { href: "/about", label: "Nosotros" },
     { href: "/contact", label: "Contacto" },
   ];
 
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, [isMobileMenuOpen]);
+
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_top,rgba(40,97,129,0.14),transparent_24%),radial-gradient(circle_at_80%_12%,rgba(50,57,82,0.18),transparent_22%),linear-gradient(180deg,#0b0e14_0%,#090c12_100%)] text-white">
-      <motion.div
+    <div className="relative min-h-screen overflow-x-hidden bg-[var(--lavi-ink)] text-[var(--lavi-paper)] antialiased">
+      <div
         aria-hidden
-        className="pointer-events-none absolute -top-24 -left-20 h-72 w-72 rounded-full bg-accent/10 blur-3xl"
+        className="pointer-events-none fixed inset-0 z-0 opacity-45"
+        style={{
+          background:
+            "radial-gradient(circle at 15% 20%, rgba(40,97,129,0.22), transparent 38%), radial-gradient(circle at 86% 12%, rgba(118,149,186,0.2), transparent 34%), linear-gradient(180deg, rgba(8,11,16,0.9), rgba(8,11,16,0.98))",
+        }}
       />
-      <motion.div
-        aria-hidden
-        className="pointer-events-none absolute top-1/3 -right-20 h-96 w-96 rounded-full bg-secondary/12 blur-3xl"
-      />
 
-      <motion.header
-        initial={{ y: -24, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="sticky top-0 z-50 w-full border-b border-[rgba(0,0,0,0.7)] bg-[rgba(50,57,82,0.72)] backdrop-blur-2xl"
-      >
-        <div className="w-full border-b border-white/10 bg-white/[0.02]">
-          <div className="container mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20 py-2.5 flex flex-col md:flex-row md:items-center gap-2 md:gap-6 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/65">
-            <span className="whitespace-nowrap text-hover">Sistema de estudio LAVI & CO</span>
-            <div className="flex flex-wrap gap-3 md:gap-5">
-              {mockHighlights.map((item) => (
-                <span key={item}>{item}</span>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="container mx-auto flex max-w-[1440px] items-center justify-between gap-6 px-6 py-4 md:px-12 lg:px-20">
-          <Link href="/" className="flex items-center">
-            <Image
-              src="/media/logos/lavi-logo-light.png"
-              alt="LAVI & CO"
-              width={250}
-              height={100}
-              priority
-              className="h-8 w-auto md:h-9"
-            />
-          </Link>
-
-          <nav className="hidden items-center gap-6 text-[13px] font-medium text-white/80 lg:flex">
-            {navItems.map((item) => {
-              const isActive = pathname === item.href;
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  aria-current={isActive ? "page" : undefined}
-                  className={`rounded-full px-3 py-1.5 transition-all ${
-                    isActive
-                      ? "bg-[color:rgba(40,97,129,0.35)] text-white ring-1 ring-[rgba(0,0,0,0.4)]"
-                      : "text-white/72 hover:bg-[color:rgba(50,57,82,0.55)] hover:text-white"
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
-          </nav>
-
-          <Link
-            href="/comenzar"
-            className="inline-flex rounded-full border border-[var(--primary)] bg-[var(--primary)] px-5 py-2.5 text-[13px] font-semibold text-[var(--text-primary)] shadow-[0_10px_24px_rgba(0,0,0,0.35)] transition-all hover:-translate-y-0.5 hover:bg-[color:color-mix(in_oklab,var(--primary)_90%,white_10%)]"
-          >
-            Comenzar
-          </Link>
-        </div>
-
-        <div className="hidden md:block border-t border-white/10">
-          <div className="container mx-auto flex max-w-[1440px] items-center gap-4 px-6 py-2.5 text-[10px] uppercase tracking-[0.18em] text-white/58 md:px-12 lg:px-20">
-            <p>Resultados simulados de referencia</p>
-            <div className="flex-1 grid grid-cols-2 xl:grid-cols-4 gap-2">
-              {mockResults.slice(0, 4).map((item) => (
-                <span key={item.company} className="overflow-hidden rounded border border-[var(--primary)]/25 bg-[color:rgba(50,57,82,0.9)] px-2 py-1 whitespace-nowrap text-ellipsis text-white/78">
-                  {item.company} {item.metric} {item.metricLabel}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="border-t border-white/10 px-6 py-2 text-[10px] uppercase tracking-[0.16em] text-white/58 md:hidden">
-          <p className="truncate">Resultados simulados de referencia</p>
-          <p className="mt-1 truncate text-white/72">
-            {mockResults[0].company} {mockResults[0].metric} {mockResults[0].metricLabel} · {mockResults[1].company} {mockResults[1].metric} {mockResults[1].metricLabel}
-          </p>
-        </div>
-
-        <div className="lg:hidden px-6 md:px-12 pb-4">
-          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar">
-            {navItems.map((item) => {
-              const isActive = pathname === item.href;
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  aria-current={isActive ? "page" : undefined}
-                  className={`inline-flex whitespace-nowrap rounded-full border px-4 py-2 text-xs font-semibold transition-colors ${
-                    isActive
-                      ? "border-[var(--primary)] bg-[var(--primary)] text-[var(--text-primary)]"
-                      : "border-white/20 text-white/82 hover:border-[var(--primary)]/50 hover:bg-[color:rgba(50,57,82,0.55)]"
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      </motion.header>
-
-      <div className="relative z-10">{children}</div>
-
-      <motion.footer
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="relative z-10 border-t border-[rgba(0,0,0,0.78)] bg-[rgba(0,0,0,0.92)]"
-      >
-        <div className="container mx-auto max-w-[1440px] px-6 md:px-12 lg:px-20 py-10 lg:py-14">
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 xl:gap-10">
-            <div>
+      <div className="relative z-10 w-full">
+        <motion.header
+          initial={{ y: -24, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
+          className="sticky top-0 z-50 w-full border-b border-white/8 bg-[linear-gradient(180deg,rgba(8,11,16,0.92),rgba(8,11,16,0.7))] backdrop-blur-xl"
+        >
+          <div className="flex w-full items-center justify-between gap-4 px-5 py-4 sm:px-6 md:px-12 md:py-5 lg:px-16">
+            <Link href="/" className="flex items-center transition-opacity hover:opacity-80">
               <Image
-                src="/media/logos/lavi-logo-light.png"
+                src="/media/logos/lavi-logo-outline-light.png"
                 alt="LAVI & CO"
-                width={250}
-                height={100}
-                className="mb-4 h-8 w-auto"
+                width={300}
+                height={120}
+                priority
+                className="h-9 w-auto sm:h-10 md:h-[46px]"
               />
-              <p className="text-sm text-white/85 max-w-sm leading-relaxed">
-                Consultoría digital y automatización para operaciones de alto impacto desde Arequipa, Perú.
-              </p>
-            </div>
+            </Link>
 
-            <div>
-              <p className="text-xs uppercase tracking-[0.14em] text-white/58 mb-3">Navegación</p>
-              <div className="flex flex-col gap-2 text-sm text-white/85">
-                <Link href="/work" className="hover:text-[var(--lavi-paper)] transition-colors">Casos</Link>
-                <Link href="/services" className="hover:text-[var(--lavi-paper)] transition-colors">Servicios</Link>
-                <Link href="/logistica" className="hover:text-[var(--lavi-paper)] transition-colors">Logística</Link>
-                <Link href="/about" className="hover:text-[var(--lavi-paper)] transition-colors">Nosotros</Link>
-                <Link href="/contact" className="hover:text-[var(--lavi-paper)] transition-colors">Contacto</Link>
-                <Link href="/evaluacion" className="hover:text-[var(--lavi-paper)] transition-colors">Evaluar sin costo</Link>
-              </div>
-            </div>
+            <nav className="hidden items-center gap-8 text-[13px] font-medium tracking-[0.02em] text-white/70 lg:flex xl:gap-10">
+              {navItems.map((item) => {
+                const isActive = pathname === item.href;
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    aria-current={isActive ? "page" : undefined}
+                    className={`group relative inline-flex items-center pb-1 transition-colors duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] hover:text-white ${
+                      isActive ? "text-white" : ""
+                    }`}
+                  >
+                    <span>{item.label}</span>
+                    <span
+                      className={`absolute bottom-0 left-0 h-[1px] w-full origin-left bg-white transition-transform duration-300 ease-[cubic-bezier(0.25,1,0.5,1)] ${
+                        isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                      }`}
+                    />
+                  </Link>
+                );
+              })}
+            </nav>
 
-            <div>
-              <p className="text-xs uppercase tracking-[0.14em] text-white/58 mb-3">Resultados Mock</p>
-              <div className="space-y-2 text-sm text-white/85">
-                {mockResults.slice(0, 3).map((item) => (
-                  <p key={item.company}>
-                    <span className="text-white font-semibold">{item.company}:</span> {item.metric} {item.metricLabel}
-                  </p>
-                ))}
-              </div>
-            </div>
+            <div className="flex items-center gap-2 sm:gap-3">
+              <Link
+                href="/comenzar"
+                className="hidden items-center justify-center rounded-full bg-white px-5 py-2.5 text-[12px] font-semibold text-black transition-transform hover:-translate-y-0.5 active:translate-y-0 sm:inline-flex md:px-6 md:text-[13px]"
+              >
+                Iniciar proyecto
+              </Link>
 
-            <div>
-              <p className="text-xs uppercase tracking-[0.14em] text-white/58 mb-3">Contacto</p>
-              <p className="text-sm text-white/85">hello@laviandco.com</p>
-              <p className="text-sm text-white/60 mt-4">Industria alimentaria y logística</p>
+              <button
+                type="button"
+                aria-label={isMobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
+                aria-expanded={isMobileMenuOpen}
+                aria-controls="site-mobile-menu"
+                onClick={() => setIsMobileMenuOpen((open) => !open)}
+                className="relative inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-[rgba(15,19,27,0.55)] text-white backdrop-blur-xl transition-colors hover:border-white/30 hover:bg-[rgba(40,97,129,0.28)] lg:hidden"
+              >
+                <span className="sr-only">Menú</span>
+                <span aria-hidden className="relative block h-3.5 w-5">
+                  <span
+                    className={`absolute left-0 top-0 h-[1.5px] w-full bg-white transition-transform duration-300 ${
+                      isMobileMenuOpen ? "translate-y-[6px] rotate-45" : ""
+                    }`}
+                  />
+                  <span
+                    className={`absolute left-0 top-[6px] h-[1.5px] w-full bg-white transition-opacity duration-200 ${
+                      isMobileMenuOpen ? "opacity-0" : "opacity-100"
+                    }`}
+                  />
+                  <span
+                    className={`absolute left-0 top-[12px] h-[1.5px] w-full bg-white transition-transform duration-300 ${
+                      isMobileMenuOpen ? "-translate-y-[6px] -rotate-45" : ""
+                    }`}
+                  />
+                </span>
+              </button>
             </div>
           </div>
 
-          <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap gap-2">
-            {mockClientBrands.map((brand) => (
-                <span key={brand} className="inline-flex rounded-full bg-[color:rgba(50,57,82,0.35)] px-3 py-1.5 text-xs font-semibold text-white/80">
-                {brand}
-              </span>
-            ))}
-          </div>
-        </div>
-      </motion.footer>
+          <AnimatePresence>
+            {isMobileMenuOpen && (
+              <motion.div
+                key="site-mobile-menu"
+                id="site-mobile-menu"
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.35, ease: [0.32, 0.72, 0, 1] }}
+                className="overflow-hidden border-t border-white/8 bg-[rgba(8,11,16,0.97)] backdrop-blur-xl lg:hidden"
+              >
+                <nav className="mx-auto flex max-w-[1440px] flex-col gap-1 px-5 py-5 sm:px-6 md:px-12">
+                  {navItems.map((item, index) => {
+                    const isActive = pathname === item.href;
+                    return (
+                      <motion.div
+                        key={item.href}
+                        initial={{ opacity: 0, x: -8 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.35, delay: 0.05 + index * 0.04, ease: [0.32, 0.72, 0, 1] }}
+                      >
+                        <Link
+                          href={item.href}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          aria-current={isActive ? "page" : undefined}
+                          className={`flex items-center justify-between rounded-xl px-3 py-3 text-base font-medium transition-colors ${
+                            isActive
+                              ? "bg-white/5 text-white"
+                              : "text-white/85 hover:bg-white/5 hover:text-white"
+                          }`}
+                        >
+                          <span>{item.label}</span>
+                          <span aria-hidden className={isActive ? "text-white" : "text-white/40"}>→</span>
+                        </Link>
+                      </motion.div>
+                    );
+                  })}
+                  <div className="mt-4 flex flex-col gap-2 border-t border-white/8 pt-4">
+                    <Link
+                      href="/comenzar"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="inline-flex w-full items-center justify-center rounded-full bg-white px-6 py-3 text-[13px] font-semibold text-black transition-transform active:scale-[0.98]"
+                    >
+                      Iniciar proyecto
+                    </Link>
+                    <Link
+                      href="/evaluacion"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="inline-flex w-full items-center justify-center rounded-full border border-white/20 px-6 py-3 text-[13px] font-semibold text-white transition-colors hover:bg-white/5"
+                    >
+                      Evaluación operativa
+                    </Link>
+                  </div>
+                </nav>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.header>
+
+        <div className="relative z-10">{children}</div>
+
+        <SiteFooter />
+      </div>
     </div>
   );
 }

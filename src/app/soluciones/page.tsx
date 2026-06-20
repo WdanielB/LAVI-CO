@@ -5,7 +5,7 @@ export default function SolucionesPage() {
     <LandingSubpage
       badge="Soluciones"
       title="Soluciones digitales alineadas al negocio"
-      description="Integramos analitica, software y automatizacion en un plan unico para que cada equipo opere con mas control, trazabilidad y velocidad de respuesta."
+      description="Integramos analítica, software y automatización en un plan único para que cada equipo opere con más control, trazabilidad y velocidad de respuesta."
       focusAreas={[
         "Diseño de arquitectura funcional orientada a escalabilidad.",
         "Convergencia de datos y procesos entre áreas operativas y comerciales.",
@@ -25,6 +25,10 @@ export default function SolucionesPage() {
       metricValue="+42%"
       ctaLabel="Ver plan inicial"
       ctaHref="/comenzar"
+      secondaryCtaLabel="Servicios"
+      secondaryCtaHref="/services"
+      heroImage="/media/philippe-bontemps-FBsKq8iOSKg-unsplash.jpg"
+      heroImageAlt="Imagen atmosférica usada para soluciones digitales"
     />
   );
 }

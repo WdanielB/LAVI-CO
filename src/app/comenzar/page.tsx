@@ -4,8 +4,8 @@ export default function ComenzarPage() {
   return (
     <LandingSubpage
       badge="Comenzar"
-      title="Primer paso: evaluacion de procesos clave"
-      description="En esta etapa priorizamos las tareas que mas impacto generan en tiempo, costo y calidad. Definimos un roadmap corto para ejecutar mejoras visibles desde el inicio."
+      title="Primer paso: evaluación de procesos clave"
+      description="En esta etapa priorizamos las tareas que más impacto generan en tiempo, costo y calidad. Definimos un roadmap corto para ejecutar mejoras visibles desde el inicio."
       focusAreas={[
         "Alineación de objetivos de negocio, operación y tecnología.",
         "Detección de oportunidades con impacto financiero tangible.",
@@ -22,9 +22,13 @@ export default function ComenzarPage() {
         "Gobernanza de avance con revisión periódica de KPI.",
       ]}
       metricLabel="tiempo para lanzar primer flujo optimizado"
-      metricValue="15 dias"
-      ctaLabel="Ir a evaluacion sin costo"
+      metricValue="15 días"
+      ctaLabel="Ir a evaluación sin costo"
       ctaHref="/evaluacion"
+      secondaryCtaLabel="Ver casos"
+      secondaryCtaHref="/work"
+      heroImage="/media/jhonny-torrengo-hlauPhNYYLY-unsplash.jpg"
+      heroImageAlt="Imagen editorial usada para la fase de inicio del proyecto"
     />
   );
 }

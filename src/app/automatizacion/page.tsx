@@ -3,9 +3,9 @@ import { LandingSubpage } from "../_components/landing-subpage";
 export default function AutomatizacionPage() {
   return (
     <LandingSubpage
-      badge="Automatizacion"
+      badge="Automatización"
       title="Resultados medibles en semanas, no en meses"
-      description="Diseñamos automatizaciones a medida para tareas operativas repetitivas. El objetivo es liberar capacidad del equipo y reducir errores humanos en procesos criticos del negocio."
+      description="Diseñamos automatizaciones a medida para tareas operativas repetitivas. El objetivo es liberar capacidad del equipo y reducir errores humanos en procesos críticos del negocio."
       focusAreas={[
         "Relevamiento ejecutivo de procesos con mayor carga operativa.",
         "Rediseño de circuitos críticos con automatización y controles de calidad.",
@@ -21,10 +21,14 @@ export default function AutomatizacionPage() {
         "Escalado por etapas con gobierno de cambios y adopción interna.",
         "Seguimiento de KPI semanales con mesa de mejora continua.",
       ]}
-      metricLabel="reduccion promedio del tiempo operativo"
+      metricLabel="reducción promedio del tiempo operativo"
       metricValue="20x"
-      ctaLabel="Solicitar evaluacion"
+      ctaLabel="Solicitar evaluación"
       ctaHref="/evaluacion"
+      secondaryCtaLabel="Ver logística"
+      secondaryCtaHref="/logistica"
+      heroImage="/media/tecnic-bioprocess-solutions-SQkt_CJ-ARs-unsplash.jpg"
+      heroImageAlt="Visual industrial usado para automatización"
     />
   );
 }
