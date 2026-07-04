@@ -1,82 +1,102 @@
-import { StudioShowcasePage } from "../_components/studio-showcase-page";
+import type { Metadata } from "next";
+import { SiteChrome } from "../_components/site-chrome";
+import { PageHero } from "../_components/sections/page-hero";
+import { SectionHeading } from "../_components/sections/section-heading";
+import { Reveal } from "../_components/sections/reveal";
+import { Steps } from "../_components/sections/steps";
+
+export const metadata: Metadata = {
+  title: "Contacto | LAVI & CO",
+  description:
+    "Cuéntanos qué está frenando tu operación. Respondemos en un día hábil con un siguiente paso claro: llamada de 20 minutos y propuesta breve.",
+};
+
+const MAILTO = "mailto:contacto@lavi.lat?subject=Consulta%20LAVI%20%26%20CO";
+// TODO: reemplazar con el número real de WhatsApp Business antes de publicar el botón.
+// const WHATSAPP = "https://wa.me/51XXXXXXXXX";
 
 export default function ContactPage() {
   return (
-    <StudioShowcasePage
-      eyebrow="Contacto"
-      title="Una línea directa para proyectos, auditorías y trabajo de producto."
-      description="Si necesitas un sistema más claro, un mejor sitio o un modelo operativo más limpio, podemos empezar con una revisión breve y seguir desde ahí."
-      verticalLabel="Contacto / LAVI & CO"
-      heroMedia={{
-        kind: "video",
-        src: "/media/39892-423345743_medium.mp4",
-        alt: "Visual breve en movimiento usado como fondo de la página de contacto",
-        caption: "Reel de contacto / fondo en movimiento",
-      }}
-      heroMetrics={[
-        { value: "24h", label: "respuesta", detail: "Mantenemos la primera respuesta rápida para que los proyectos no se frenen al inicio." },
-        { value: "1", label: "auditoría", detail: "Un diagnóstico breve puede aclarar alcance, riesgo y el mejor primer movimiento." },
-        { value: "3 sem", label: "hoja de ruta", detail: "La mayoría de los encargos empieza con un plan compacto y usable, no con un deck gigante." },
-      ]}
-      introNote="Empieza aquí"
-      introTitle="Envíanos el contexto y armamos el primer sistema alrededor de eso."
-      introBody="La página de contacto está pensada como una entrada calma: un diagnóstico breve, unas pocas métricas clave y un siguiente paso claro."
-      sections={[
-        {
-          eyebrow: "Paso 01",
-          title: "Cuenta el problema en lenguaje simple",
-          body: "No necesitamos un deck largo para empezar. El objetivo es entender la presión del negocio y la fricción actual.",
-          bullets: [
-            "Describe el workflow que se siente lento o frágil.",
-            "Cuéntanos dónde aparece el costo, el tiempo o la confusión.",
-            "Incluye plazos o restricciones de lanzamiento.",
-          ],
-          metric: { value: "15 min", label: "llamada breve", detail: "Suficiente para definir si el proyecto necesita primero estrategia, diseño o desarrollo." },
-          media: {
-            kind: "image",
-            src: "/media/regina-bordon-JEiJBQYBqLY-unsplash.jpg",
-            alt: "Imagen editorial de contacto con un contexto humano y calmado",
-            caption: "Contacto inicial / contexto humano",
+    <SiteChrome>
+      <PageHero
+        eyebrow="Contacto"
+        title="Cuéntanos qué te está frenando. Respondemos en un día hábil."
+        description="No necesitamos un brief perfecto ni una reunión de una hora. Un correo con dos o tres líneas sobre tu operación es suficiente para empezar."
+      />
+
+      <section className="container mx-auto max-w-[1440px] px-5 pb-16 sm:px-6 md:px-12 md:pb-20 lg:px-20">
+        <Reveal>
+          <div className="flex flex-col gap-6 border-y-2 border-[var(--lavi-accent)] py-8 lg:flex-row lg:items-center lg:justify-between lg:py-10">
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/65">Canal directo</p>
+              <p className="mt-2 font-serif text-2xl font-semibold leading-tight text-white lg:text-3xl">
+                contacto@lavi.lat
+              </p>
+              <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/75">
+                Escríbenos y coordinamos una llamada de 20 minutos para entender tu operación. Sin compromiso: si no
+                somos el fit correcto, te lo decimos en esa primera llamada.
+              </p>
+            </div>
+            <a
+              href={MAILTO}
+              className="group inline-flex shrink-0 items-center gap-3 bg-white px-6 py-3 text-[13px] font-semibold text-black transition-colors hover:bg-white/90"
+            >
+              <span>Escríbenos por correo</span>
+              <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
+            </a>
+          </div>
+        </Reveal>
+      </section>
+
+      <Steps
+        eyebrow="Proceso"
+        title="Qué pasa después de tu mensaje."
+        items={[
+          {
+            title: "Te respondemos",
+            meta: "1 día hábil",
+            body: "Lees una respuesta concreta, no un autoresponder. Si tu caso no es para nosotros, también te lo decimos ahí.",
           },
-        },
-        {
-          eyebrow: "Paso 02",
-          title: "Revisar el sistema y la oportunidad",
-          body: "Mapeamos el estado actual, identificamos el cuello de botella real y lo convertimos en un plan breve de siguiente paso.",
-          bullets: [
-            "Revisión operativa y marco de oportunidad.",
-            "Recomendaciones priorizadas con estimaciones de impacto.",
-            "Alcance claro para un primer ciclo de entrega.",
-          ],
-          metric: { value: "1", label: "hoja de ruta", detail: "Un plan enfocado que el cliente realmente pueda usar y ejecutar." },
-          media: {
-            kind: "video",
-            src: "/media/34317-400974371_medium.mp4",
-            alt: "Fondo en movimiento usado para contexto de planificación y hoja de ruta",
-            caption: "Hoja de ruta / planificación en movimiento",
+          {
+            title: "Llamada de 20 minutos",
+            meta: "Sin costo",
+            body: "Entendemos tu operación: dónde se pierde tiempo, qué sistemas usas hoy y qué resultado esperas.",
           },
-          reverse: true,
-        },
-        {
-          eyebrow: "Paso 03",
-          title: "Lanzar un primer release con impacto medible",
-          body: "Una vez clara la dirección, pasamos al primer release con un alcance limpio y una métrica de éxito definida.",
-          bullets: [
-            "Ciclos de release pequeños con progreso visible.",
-            "Un solo responsable por lado para continuidad.",
-            "Puntos de revisión atados a métricas de negocio.",
-          ],
-          metric: { value: "0", label: "adivinanza", detail: "El proceso está pensado para reducir incertidumbre temprano, antes de que se vuelva costosa." },
-          media: {
-            kind: "image",
-            src: "/media/victor-2PJMDIgK9EA-unsplash.jpg",
-            alt: "Visual de contacto para contexto de entrega y lanzamiento",
-            caption: "Lanzamiento / ejecución directa",
+          {
+            title: "Propuesta breve",
+            meta: "Alcance · plazo · precio",
+            body: "Recibes una propuesta corta con el primer paso definido: qué construimos, en cuánto tiempo y cuánto cuesta. Sin decks de 80 láminas.",
           },
-        },
-      ]}
-      ctaPrimary={{ label: "Empezar con una auditoría", href: "/evaluacion" }}
-      ctaSecondary={{ label: "Ver casos", href: "/work" }}
-    />
+        ]}
+      />
+
+      <section className="container mx-auto max-w-[1440px] px-5 pb-20 sm:px-6 md:px-12 md:pb-24 lg:px-20">
+        <SectionHeading
+          eyebrow="Para avanzar más rápido"
+          title="Qué incluir en tu mensaje."
+          description="Con estos tres puntos llegamos a la llamada con la mitad del trabajo hecho. Si no los tienes claros, escríbenos igual."
+        />
+        <Reveal>
+          <ul className="max-w-3xl border-t border-white/25">
+            {[
+              "El proceso que hoy se siente lento, frágil o demasiado manual.",
+              "Dónde aparece el costo: horas de tu equipo, errores, retrabajos o decisiones tardías.",
+              "Plazos o restricciones que tengamos que respetar (temporada alta, cierre contable, migraciones en curso).",
+            ].map((item) => (
+              <li
+                key={item}
+                className="flex gap-4 border-b border-white/15 py-4 text-sm leading-relaxed text-white/80 lg:text-base"
+              >
+                <span aria-hidden className="mt-[7px] h-px w-5 shrink-0 bg-[var(--lavi-accent)]" />
+                {item}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-6 max-w-3xl text-sm text-white/60">
+            Respuesta en 1 día hábil · Arequipa, Perú · Trabajamos con operaciones en todo LATAM.
+          </p>
+        </Reveal>
+      </section>
+    </SiteChrome>
   );
 }

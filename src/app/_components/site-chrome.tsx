@@ -17,7 +17,6 @@ export function SiteChrome({ children }: SiteChromeProps) {
 
   const navItems = [
     { href: "/work", label: "Casos" },
-    { href: "/portafolio", label: "Impacto" },
     { href: "/services", label: "Servicios" },
     { href: "/logistica", label: "Logística" },
     { href: "/about", label: "Nosotros" },
@@ -88,10 +87,10 @@ export function SiteChrome({ children }: SiteChromeProps) {
 
             <div className="flex items-center gap-2 sm:gap-3">
               <Link
-                href="/comenzar"
-                className="hidden items-center justify-center rounded-full bg-white px-5 py-2.5 text-[12px] font-semibold text-black transition-transform hover:-translate-y-0.5 active:translate-y-0 sm:inline-flex md:px-6 md:text-[13px]"
+                href="/contact"
+                className="hidden items-center justify-center bg-white px-5 py-2.5 text-[12px] font-semibold text-black transition-colors hover:bg-white/90 sm:inline-flex md:px-6 md:text-[13px]"
               >
-                Iniciar proyecto
+                Agenda una llamada
               </Link>
 
               <button
@@ -163,18 +162,11 @@ export function SiteChrome({ children }: SiteChromeProps) {
                   })}
                   <div className="mt-4 flex flex-col gap-2 border-t border-white/8 pt-4">
                     <Link
-                      href="/comenzar"
+                      href="/contact"
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="inline-flex w-full items-center justify-center rounded-full bg-white px-6 py-3 text-[13px] font-semibold text-black transition-transform active:scale-[0.98]"
+                      className="inline-flex w-full items-center justify-center bg-white px-6 py-3 text-[13px] font-semibold text-black transition-colors active:bg-white/90"
                     >
-                      Iniciar proyecto
-                    </Link>
-                    <Link
-                      href="/evaluacion"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="inline-flex w-full items-center justify-center rounded-full border border-white/20 px-6 py-3 text-[13px] font-semibold text-white transition-colors hover:bg-white/5"
-                    >
-                      Evaluación operativa
+                      Agenda una llamada
                     </Link>
                   </div>
                 </nav>
