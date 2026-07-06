@@ -90,7 +90,7 @@ export default function Home() {
 
   return (
     <MotionConfig reducedMotion="user">
-      <main className="relative min-h-screen overflow-x-hidden bg-[var(--lavi-ink)] text-[var(--lavi-paper)] antialiased">
+      <main className="relative min-h-screen overflow-x-clip bg-[var(--lavi-ink)] text-[var(--lavi-paper)] antialiased">
         <div
           aria-hidden
           className="pointer-events-none fixed inset-0 z-0 opacity-45"
@@ -318,8 +318,8 @@ export default function Home() {
       <div className="relative w-full z-10 bg-[var(--lavi-ink)] overflow-hidden">
         {/* Fondo atmosférico estático para el flujo inferior */}
         <div aria-hidden className="absolute inset-0 z-0 pointer-events-none opacity-[0.08]">
-            <div className="absolute -top-[10%] -left-[10%] w-[50vw] h-[50vw] max-w-[600px] max-h-[600px] rounded-full bg-[rgba(40,97,129,0.7)] blur-[120px]" />
-            <div className="absolute top-[40%] -right-[15%] w-[60vw] h-[50vw] max-w-[700px] max-h-[600px] rounded-full bg-[rgba(118,149,186,0.5)] blur-[140px]" />
+            <div className="absolute -top-[10%] -left-[10%] w-[50vw] h-[50vw] max-w-[600px] max-h-[600px] rounded-full bg-[rgba(40,97,129,0.7)] blur-[64px]" />
+            <div className="absolute top-[40%] -right-[15%] w-[60vw] h-[50vw] max-w-[700px] max-h-[600px] rounded-full bg-[rgba(118,149,186,0.5)] blur-[64px]" />
         </div>
 
         {/* El contenido necesita z-10 para estar por encima del fondo animado */}

@@ -33,7 +33,7 @@ export function SiteChrome({ children }: SiteChromeProps) {
   }, [isMobileMenuOpen]);
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-[var(--lavi-ink)] text-[var(--lavi-paper)] antialiased">
+    <div className="relative min-h-screen overflow-x-clip bg-[var(--lavi-ink)] text-[var(--lavi-paper)] antialiased">
       <div
         aria-hidden
         className="pointer-events-none fixed inset-0 z-0 opacity-45"
