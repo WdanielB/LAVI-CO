@@ -1,191 +1,166 @@
-import { StudioShowcasePage } from "../_components/studio-showcase-page";
+import type { Metadata } from "next";
+import { SiteChrome } from "../_components/site-chrome";
+import { PageHero } from "../_components/sections/page-hero";
+import { CardGrid } from "../_components/sections/card-grid";
+import { CtaBanner } from "../_components/sections/cta-banner";
 import { CadBlueprint } from "../_components/cad-blueprint";
+
+export const metadata: Metadata = {
+  title: "Casos | LAVI & CO",
+  description:
+    "Los frentes de trabajo de LAVI & CO: automatización con n8n, ERP y CRM a medida, torre de control operativa, producto e I+D. Qué construimos y qué resuelve.",
+};
 
 export default function WorkPage() {
   return (
-    <StudioShowcasePage
-      eyebrow="Casos seleccionados"
-      title="Cuando la operación crece sin sistema, el costo aparece en cada entrega."
-      description="Mostramos intervenciones reales en producto, automatización con n8n y herramientas digitales a medida (ERP, CRM y portales internos) para reducir fricción, acelerar decisiones y recuperar control operativo."
-      verticalLabel="Casos seleccionados / LAVI & CO"
-      heroMedia={{
-        kind: "video",
-        src: "/media/3179-166339018_medium.mp4",
-        alt: "Video aéreo usado como fondo principal para los casos seleccionados",
-        caption: "Reel principal / fondo en movimiento",
-      }}
-      heroMetrics={[
-        { value: "+31%", label: "productividad", detail: "La salida operativa mejoró tras consolidar sistemas y priorizar mejor el servicio." },
-        { value: "6 sem", label: "primer release", detail: "Los ciclos de diseño y desarrollo se comprimieron gracias a un alcance más enfocado." },
-        { value: "94%", label: "trazabilidad", detail: "La visibilidad mejoró en flujos, rutas y eventos de entrega." },
-      ]}
-      focusTracks={[
-        {
-          id: "track-ops",
-          label: "Operaciones",
-          detail: "Menos escalamientos y más control en despacho diario.",
-          sectionId: "case-ops",
-        },
-        {
-          id: "track-growth",
-          label: "Comercial",
-          detail: "Mejor narrativa y señales más claras para calificar demanda.",
-          sectionId: "case-growth",
-        },
-        {
-          id: "track-n8n",
-          label: "n8n / Workflows",
-          detail: "Orquestación de tareas con triggers, APIs y reglas claras.",
-          sectionId: "case-n8n",
-        },
-        {
-          id: "track-erp",
-          label: "ERP / CRM a medida",
-          detail: "Herramientas internas pegadas al proceso real, no al manual.",
-          sectionId: "case-erp",
-        },
-        {
-          id: "track-automation",
-          label: "Automatización",
-          detail: "Adopción gradual con impacto visible en menos de una semana.",
-          sectionId: "case-automation",
-        },
-        {
-          id: "track-id",
-          label: "I+D / Producto",
-          detail: "Metodología desde concepto hasta prototipo validado con trazabilidad de fases.",
-          sectionId: "case-id",
-        },
-      ]}
-      introNote="Biblioteca de casos"
-      introTitle="Seis frentes, un solo estándar: resultados medibles con menos ruido operativo."
-      introBody="Primero elegí el frente que más te duele —operaciones, comercial, workflows con n8n, ERP/CRM a medida, automatización o I+D de producto. Después podés entrar en la narrativa completa del caso para revisar decisión, ejecución e impacto."
-      sections={[
-        {
-          id: "case-ops",
-          eyebrow: "Caso 01",
-          audience: "Para líderes de operaciones",
-          title: "Torre de control para operaciones en vivo",
-          body: "Se introdujo una capa central de comando para alinear despacho, manejo de excepciones y visibilidad del servicio en un solo ritmo operativo.",
-          bullets: [
-            "Reducimos traspasos manuales entre planificación y ejecución.",
-            "Introdujimos estados de excepción en tiempo real y vistas de nivel de servicio.",
-            "Mejoramos la visibilidad de liderazgo sin sumar trabajo de reporte.",
-          ],
-          metric: { value: "-27%", label: "escalamientos manuales", detail: "Hubo menos intervenciones urgentes una vez centralizadas las reglas de ruta y servicio." },
-          media: {
-            kind: "image",
-            src: "/media/tecnic-bioprocess-solutions-SQkt_CJ-ARs-unsplash.jpg",
-            alt: "Visual industrial usado para representar un sistema de torre de control",
-            caption: "Centro de comando operativo / contexto industrial",
+    <SiteChrome>
+      <PageHero
+        eyebrow="Frentes de trabajo"
+        title="Lo que construimos, por frente de operación."
+        description="Estos son los tipos de problema que resolvemos y qué entregamos en cada uno. ¿Reconoces alguno en tu operación? En una llamada te decimos cómo lo abordaríamos y por dónde empezar."
+        primaryCta={{ label: "Agenda una llamada", href: "/contact" }}
+        secondaryCta={{ label: "Ver servicios", href: "/services" }}
+      />
+
+      <CardGrid
+        eyebrow="Seis frentes de trabajo"
+        title="Seis frentes, un mismo estándar de ejecución."
+        description="Operaciones, comercial, workflows con n8n, ERP/CRM a medida, automatización e I+D. Cada frente: cuándo aparece, qué construimos y qué resuelve."
+        items={[
+          {
+            id: "case-ops",
+            eyebrow: "Operaciones",
+            title: "Torre de control para operaciones en vivo",
+            rows: [
+              {
+                label: "Cuándo",
+                text: "Despacho, excepciones y visibilidad del servicio viven en canales separados; cada urgencia escala a gerencia.",
+              },
+              {
+                label: "Qué construimos",
+                text: "Una capa central de comando: estados de excepción en tiempo real, vistas de nivel de servicio y menos traspasos manuales entre planificación y ejecución.",
+              },
+              {
+                label: "Qué resuelve",
+                text: "Menos intervenciones urgentes al centralizar las reglas de ruta y servicio, con visibilidad gerencial sin trabajo extra de reporte.",
+                highlight: true,
+              },
+            ],
           },
-        },
-        {
-          id: "case-growth",
-          eyebrow: "Caso 02",
-          audience: "Para equipos comerciales",
-          title: "Experiencia comercial con señales de conversión más claras",
-          body: "Se reestructuró un sitio comercial para contar la historia correcta en el orden correcto, dando a cada sección una sola tarea y una medida de éxito.",
-          bullets: [
-            "Rehicimos la arquitectura de información alrededor de la intención, no de la decoración.",
-            "Ajustamos el copy para reducir carga cognitiva y aumentar claridad.",
-            "Alineamos la jerarquía de CTA con el recorrido real del comprador.",
-          ],
-          metric: { value: "+18%", label: "leads calificados", detail: "Un mejor orden y un ritmo visual más fuerte elevaron la calidad del interés entrante." },
-          media: {
-            kind: "image",
-            src: "/media/jhonny-torrengo-hlauPhNYYLY-unsplash.jpg",
-            alt: "Imagen oscura de producto y arquitectura usada para narrativa comercial",
-            caption: "Experiencia comercial / layout narrativo",
+          {
+            id: "case-growth",
+            eyebrow: "Comercial",
+            title: "Sitios y experiencias comerciales que sí venden",
+            rows: [
+              {
+                label: "Cuándo",
+                text: "Un sitio comercial que cuenta mucho y vende poco: sin jerarquía clara de mensaje ni recorrido de compra.",
+              },
+              {
+                label: "Qué construimos",
+                text: "Arquitectura de información alrededor de la intención de compra: cada sección con una sola tarea y una medida de éxito.",
+              },
+              {
+                label: "Qué resuelve",
+                text: "Mejor calidad del interés entrante al ordenar la narrativa y alinear los CTAs con el recorrido real del comprador.",
+                highlight: true,
+              },
+            ],
           },
-          reverse: true,
-        },
-        {
-          id: "case-n8n",
-          eyebrow: "Caso 03",
-          audience: "Para equipos sin tiempo para tareas repetitivas",
-          title: "Workflows con n8n: integraciones que reemplazan trabajo manual",
-          body: "Diseñamos y desplegamos workflows en n8n autohospedado para conectar ERP, correo, hojas de cálculo, Slack y APIs internas. Cada flujo nace de una tarea repetitiva con horas medibles, no de una idea genérica de automatizar.",
-          bullets: [
-            "Triggers por evento, webhook o cron con reintento controlado y manejo de errores.",
-            "Integraciones con Google Workspace, WhatsApp Business, ERPs SaaS y bases SQL/NoSQL.",
-            "Workflows versionados, monitoreados y documentados para que el equipo los pueda mantener.",
-          ],
-          metric: { value: "120h", label: "ahorradas al mes", detail: "Doce flujos de back-office (cotizaciones, despachos y conciliación) bajaron de tareas manuales a ejecuciones disparadas por evento." },
-          media: {
-            kind: "image",
-            src: "/media/american-public-power-association-bv2pvCGMtzg-unsplash.jpg",
-            alt: "Imagen de infraestructura conectada usada como metáfora de orquestación de workflows",
-            caption: "n8n self-hosted / orquestación de eventos",
+          {
+            id: "case-n8n",
+            eyebrow: "n8n / Workflows",
+            title: "Integraciones que reemplazan trabajo manual",
+            rows: [
+              {
+                label: "Cuándo",
+                text: "Cotizaciones, despachos y conciliaciones dependen de copiar datos entre ERP, correo y hojas de cálculo.",
+              },
+              {
+                label: "Qué construimos",
+                text: "Workflows en n8n autohospedado: triggers por evento, reintento controlado e integraciones con Google Workspace, WhatsApp Business y bases SQL.",
+              },
+              {
+                label: "Qué resuelve",
+                text: "Tareas manuales convertidas en ejecuciones disparadas por evento, con flujos versionados y documentados que tu equipo puede mantener.",
+                highlight: true,
+              },
+            ],
           },
-        },
-        {
-          id: "case-erp",
-          eyebrow: "Caso 04",
-          audience: "Para empresas con ERP genérico que no calza",
-          title: "Herramientas digitales a medida: ERP y CRM pegados al proceso real",
-          body: "Cuando el ERP genérico empieza a doler, no siempre toca migrar — a veces toca construir capas a medida sobre lo que ya hay. Diseñamos módulos web para inventario, pedidos, cobranzas y CRM operativo conectados al stack actual.",
-          bullets: [
-            "Módulos en Next.js + PostgreSQL/Supabase con autenticación por rol y auditoría de cambios.",
-            "Interfaces enfocadas: una pantalla para una decisión, sin menús de 40 ítems.",
-            "Sincronización con ERP existente (SAP B1, Odoo, Defontana, etc.) vía API o eventos n8n.",
-          ],
-          metric: { value: "-43%", label: "tiempo de operación", detail: "El equipo de pedidos pasó de 11 minutos por orden en pantallas genéricas a 6 minutos en una interfaz hecha para su flujo real." },
-          media: {
-            kind: "image",
-            src: "/media/jonan-steiner-exwO5Ssl6-U-unsplash.jpg",
-            alt: "Imagen editorial usada para representar herramientas internas a medida",
-            caption: "ERP/CRM a medida / capas sobre el stack actual",
+          {
+            id: "case-erp",
+            eyebrow: "ERP / CRM a medida",
+            title: "Herramientas pegadas al proceso real",
+            rows: [
+              {
+                label: "Cuándo",
+                text: "Un ERP genérico que obliga al equipo a navegar pantallas de 40 menús para tareas de dos minutos.",
+              },
+              {
+                label: "Qué construimos",
+                text: "Módulos web a medida (Next.js + PostgreSQL) sincronizados con el ERP existente por API: una pantalla para una decisión, con roles y auditoría.",
+              },
+              {
+                label: "Qué resuelve",
+                text: "El equipo trabaja cada orden en una interfaz hecha para su flujo real, con menos clics y menos errores, sin migrar el ERP.",
+                highlight: true,
+              },
+            ],
           },
-          reverse: true,
-        },
-        {
-          id: "case-automation",
-          eyebrow: "Caso 05",
-          audience: "Para tecnología y transformación",
-          title: "Despliegue de automatización con control para los equipos",
-          body: "La capa de automatización se introdujo sin romper el ritmo de los equipos existentes, por lo que la adopción se sintió como una mejora del sistema y no como una migración forzada.",
-          bullets: [
-            "Mapeamos las rutas críticas antes de introducir lógica de automatización.",
-            "Usamos métricas para seguir el impacto del despliegue semana a semana.",
-            "Mantuvimos la interfaz estable mientras el backend cambiaba por debajo.",
-          ],
-          metric: { value: "48h", label: "para insight vivo", detail: "La visibilidad operativa quedó disponible en dos días desde el despliegue." },
-          media: {
-            kind: "video",
-            src: "/media/39892-423345743_medium.mp4",
-            alt: "Visual animado usado para representar despliegue y movimiento",
-            caption: "Movimiento de despliegue / adopción del sistema",
+          {
+            id: "case-automation",
+            eyebrow: "Automatización",
+            title: "Despliegue de automatización sin frenar al equipo",
+            rows: [
+              {
+                label: "Cuándo",
+                text: "La operación necesita automatizar rutas críticas sin detener el trabajo diario ni forzar una migración.",
+              },
+              {
+                label: "Qué construimos",
+                text: "Mapeamos las rutas críticas primero, mantenemos la interfaz estable y cambiamos el backend por debajo, midiendo el avance semana a semana.",
+              },
+              {
+                label: "Qué resuelve",
+                text: "La automatización entra como una mejora del sistema y no como una migración forzada, con adopción gradual y control en cada paso.",
+                highlight: true,
+              },
+            ],
           },
-        },
-        {
-          id: "case-id",
-          eyebrow: "Caso 06",
-          audience: "Para equipos de desarrollo de producto",
-          title: "I+D: De la idea al prototipo validado con metodología trazable",
-          body: "Implementamos un sistema de gestión de ciclo de desarrollo que conecta diseño, prototipado, validación y producción inicial en un flujo único con métricas en cada etapa.",
-          bullets: [
-            "Trazabilidad completa del ciclo: desde brief hasta primera corrida de producción.",
-            "Revisiones de diseño asistidas por datos con criterios de paso/fallo documentados.",
-            "Reducción de retrabajo mediante validación temprana y protocolos de prueba estructurados.",
-          ],
-          metric: {
-            value: "-52%",
-            label: "tiempo de ciclo I+D",
-            detail: "El tiempo desde concepto hasta prototipo validado se redujo al estandarizar las fases de revisión y eliminar los bucles de retrabajo tardío.",
+          {
+            id: "case-id",
+            eyebrow: "I+D / Producto",
+            title: "De la idea al prototipo validado con trazabilidad",
+            media: (
+              <div className="aspect-[4/3] bg-[rgba(5,8,14,0.55)]">
+                <CadBlueprint />
+              </div>
+            ),
+            rows: [
+              {
+                label: "Cuándo",
+                text: "Ciclos de desarrollo largos, con retrabajo tardío y poca trazabilidad entre diseño, prototipado y producción.",
+              },
+              {
+                label: "Qué construimos",
+                text: "Un sistema de gestión del ciclo completo: fases con criterios de paso/fallo documentados y validación temprana con protocolos de prueba.",
+              },
+              {
+                label: "Qué resuelve",
+                text: "El camino de concepto a prototipo validado se acorta al eliminar los bucles de retrabajo tardío.",
+                highlight: true,
+              },
+            ],
           },
-          media: {
-            kind: "component",
-            node: <CadBlueprint />,
-            caption: "Plano técnico I+D / distribución de zonas de desarrollo",
-          },
-          reverse: true,
-        },
-      ]}
-      ctaPrimary={{ label: "Agendar evaluación", href: "/evaluacion" }}
-      ctaSecondary={{ label: "Explorar servicios", href: "/services" }}
-      finalCtaPrimary={{ label: "Solicitar diagnóstico operativo", href: "/evaluacion" }}
-      finalCtaSecondary={{ label: "Revisar enfoque de servicio", href: "/services" }}
-    />
+        ]}
+      />
+
+      <CtaBanner
+        title="¿Cuál de estos se parece a tu operación?"
+        body="Cuéntanos tu caso y te decimos en una llamada qué frente tendría el mayor impacto y por dónde empezar."
+        primaryCta={{ label: "Agenda una llamada", href: "/contact" }}
+        secondaryCta={{ label: "Ver servicios", href: "/services" }}
+      />
+    </SiteChrome>
   );
 }

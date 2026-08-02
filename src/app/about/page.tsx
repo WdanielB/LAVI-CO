@@ -1,82 +1,104 @@
-import { StudioShowcasePage } from "../_components/studio-showcase-page";
+import type { Metadata } from "next";
+import { SiteChrome } from "../_components/site-chrome";
+import { PageHero } from "../_components/sections/page-hero";
+import { CardGrid } from "../_components/sections/card-grid";
+import { SectionHeading } from "../_components/sections/section-heading";
+import { Reveal } from "../_components/sections/reveal";
+import { CtaBanner } from "../_components/sections/cta-banner";
+
+export const metadata: Metadata = {
+  title: "Nosotros | LAVI & CO",
+  description:
+    "Estudio de diseño y desarrollo operativo en Arequipa, Perú. Equipo pequeño, cerca del problema, con entregas que siguen funcionando después del lanzamiento.",
+};
 
 export default function AboutPage() {
   return (
-    <StudioShowcasePage
-      eyebrow="Nosotros"
-      title="Un estudio pequeño, con foco preciso y estándar alto."
-      description="Trabajamos cerca del problema, mantenemos el proceso transparente y tratamos cada release como un sistema que debe sostenerse en el mundo real."
-      verticalLabel="Nosotros / LAVI & CO"
-      heroMedia={{
-        kind: "image",
-        src: "/media/adrienguh-wvagVtn3GGk-unsplash.jpg",
-        alt: "Imagen editorial de costa usada para enmarcar la sección de nosotros",
-        caption: "Clima del estudio / contexto calmo",
-      }}
-      heroMetrics={[
-        { value: "8", label: "disciplinas", detail: "Estrategia, diseño, frontend, automatización y decisiones de producto trabajadas en conjunto." },
-        { value: "24h", label: "respuesta", detail: "El estudio está estructurado para moverse rápido cuando un proyecto necesita impulso." },
-        { value: "1", label: "punto de contacto", detail: "Una sola responsabilidad mantiene el proceso simple para clientes y colaboradores." },
-      ]}
-      introNote="Identidad del estudio"
-      introTitle="Mantenemos el equipo pequeño para que el pensamiento siga afilado y la salida siga coherente."
-      introBody="El objetivo no es parecer ocupados. Es construir trabajo que se vea deliberado, funcione sin fricción y sostenga al negocio después del lanzamiento."
-      sections={[
-        {
-          eyebrow: "Principio 01",
-          title: "Trabajar cerca del problema",
-          body: "Evitamos la dirección abstracta sin contexto. Cada decisión se ancla en el workflow real, las restricciones y los resultados del negocio.",
-          bullets: [
-            "Los briefs se reducen a lo que realmente importa.",
-            "El equipo trabaja desde restricciones reales y no desde supuestos.",
-            "El contexto de negocio se mantiene visible durante toda la entrega.",
-          ],
-          metric: { value: "-40%", label: "iteración desperdiciada", detail: "Un alcance más preciso reduce churn de diseño y ciclos de revisión innecesarios." },
-          media: {
-            kind: "image",
-            src: "/media/kristiina-klaas-bswjmCH5g1g-unsplash.jpg",
-            alt: "Imagen suave de paisaje usada para enmarcar principios del estudio",
-            caption: "Principios / lectura cercana",
+    <SiteChrome>
+      <PageHero
+        eyebrow="Nosotros"
+        title="Somos un equipo pequeño. Eso es a propósito."
+        description="Trabajamos desde Arequipa, cerca del problema y dentro de tu operación — no desde un deck de 80 láminas. Un solo punto de contacto, proceso visible y entregas que se miden en producción."
+        primaryCta={{ label: "Agenda una llamada", href: "/contact" }}
+        secondaryCta={{ label: "Ver casos", href: "/work" }}
+      />
+
+      <CardGrid
+        eyebrow="Cómo trabajamos"
+        title="Tres reglas que no negociamos."
+        columns={3}
+        items={[
+          {
+            eyebrow: "01",
+            title: "Cerca del problema",
+            body: "Cada decisión se ancla en tu workflow real, tus restricciones y tus números — no en supuestos ni en dirección abstracta. Si hace falta, vamos a la planta.",
           },
-        },
-        {
-          eyebrow: "Principio 02",
-          title: "Mantener el proceso visible y simple",
-          body: "Los clientes deberían saber qué está pasando, qué viene después y dónde está el riesgo. La claridad es parte del servicio, no un efecto colateral.",
-          bullets: [
-            "Puntos de control transparentes de planificación y entrega.",
-            "Traspasos claros entre estrategia y ejecución.",
-            "Reglas simples para alcance, feedback y release.",
-          ],
-          metric: { value: "5", label: "etapas", detail: "Cada encargo se organiza en pocas fases entendibles." },
-          media: {
-            kind: "video",
-            src: "/media/150-135737445_medium.mp4",
-            alt: "Fondo en movimiento usado para representar visibilidad del proceso",
-            caption: "Proceso / ritmo y transparencia",
+          {
+            eyebrow: "02",
+            title: "Proceso visible",
+            body: "Siempre sabes qué está pasando, qué viene después y dónde está el riesgo. Puntos de control claros, reglas simples para alcance y feedback.",
           },
-          reverse: true,
-        },
-        {
-          eyebrow: "Principio 03",
-          title: "Entregar trabajo que siga funcionando",
-          body: "El resultado final se mide por si sigue teniendo sentido cuando la novedad se va. Los buenos sistemas sostienen su forma bajo uso real.",
-          bullets: [
-            "Comportamiento responsive verificado en distintos breakpoints.",
-            "Motion limitado a momentos intencionales.",
-            "Diseño y código mantenibles para equipos futuros.",
-          ],
-          metric: { value: "12+", label: "entregas", detail: "El enfoque del estudio está pensado para lanzamientos repetidos, no para trucos visuales aislados." },
-          media: {
-            kind: "image",
-            src: "/media/nick-QrVQ69lZx5o-unsplash.jpg",
-            alt: "Imagen editorial usada para contexto de envío y entrega",
-            caption: "Entrega / salida duradera",
+          {
+            eyebrow: "03",
+            title: "Entregas que duran",
+            body: "El resultado se mide cuando la novedad se va: código mantenible, sistemas documentados y tu equipo capaz de operarlos sin depender de nosotros.",
           },
-        },
-      ]}
-      ctaPrimary={{ label: "Iniciar proyecto", href: "/comenzar" }}
-      ctaSecondary={{ label: "Ver servicios", href: "/services" }}
-    />
+        ]}
+      />
+
+      <section className="container mx-auto max-w-[1440px] px-5 pb-16 sm:px-6 md:px-12 md:pb-20 lg:px-20">
+        <SectionHeading
+          eyebrow="Honestidad primero"
+          title="Para quién somos un buen fit — y para quién no."
+        />
+        <div className="grid grid-cols-1 gap-x-12 gap-y-10 lg:grid-cols-2">
+          <Reveal>
+            <div className="h-full border-t-2 border-[var(--lavi-accent)] pt-6">
+              <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--lavi-accent)]">
+                Somos un buen fit si
+              </p>
+              <ul className="divide-y divide-white/10">
+                {[
+                  "Tu operación tiene procesos manuales que duelen: horas perdidas, errores repetidos, decisiones tardías.",
+                  "Quieres resultados medibles en semanas y estás dispuesto a empezar por un ciclo acotado.",
+                  "Necesitas que el sistema quede documentado y en manos de tu equipo, no atado a un proveedor.",
+                ].map((item) => (
+                  <li key={item} className="py-3 text-sm leading-relaxed text-white/85 lg:text-base">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Reveal>
+          <Reveal delay={0.06}>
+            <div className="h-full border-t border-white/25 pt-6">
+              <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/55">
+                No somos el fit si
+              </p>
+              <ul className="divide-y divide-white/10">
+                {[
+                  "Buscas staffing o cuerpos por hora para un equipo que ya tiene el plan resuelto.",
+                  "Necesitas solo un logo nuevo o una web vitrina sin conexión con la operación.",
+                  "Quieres un proyecto de un año cerrado por adelantado, sin medir nada en el camino.",
+                ].map((item) => (
+                  <li key={item} className="py-3 text-sm leading-relaxed text-white/70 lg:text-base">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-4 border-t border-white/10 pt-4 text-sm text-white/60">
+                Si es tu caso, igual escríbenos: te recomendamos a quién acudir.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <CtaBanner
+        title="Una llamada de 20 minutos define si tiene sentido trabajar juntos."
+        primaryCta={{ label: "Agenda una llamada", href: "/contact" }}
+        secondaryCta={{ label: "Ver casos", href: "/work" }}
+      />
+    </SiteChrome>
   );
 }
