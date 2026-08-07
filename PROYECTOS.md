@@ -22,13 +22,13 @@ construyo las páginas (`/work`, home y donde corresponda) con esta información
 ## Datos generales del negocio
 _(Estos van en el footer, contacto y encabezado.)_
 
-- **WhatsApp** (con código de país, ej. +51 999 888 777):
-- **Teléfono** (si es distinto):
-- **Email**: contacto@lavi.lat  _(ya está en la web; cámbialo si no es correcto)_
-- **Ubicación** (ciudad, país):
-- **LinkedIn / Instagram / web / otras redes**:
-- **Años operando o año de fundación**:
-- **Clientes para mostrar en el footer** (lista de nombres, separados por coma):
+- **WhatsApp** 946689538
+- **Teléfono** 
+- **Email**: contacto@lavi.lat 
+- **Ubicación** (ciudad, país): AREQUIPA PERU
+- **LinkedIn / Instagram / web / otras redes**: ig: lavi.latam
+- **Años operando o año de fundación**: 2026
+- **Clientes para mostrar en el footer** no
 - **¿Tienes logos de esos clientes?** (sí/no — si sí, ponlos en
   `public/media/logos/clientes/` y lista los archivos):
 
@@ -57,61 +57,63 @@ _(Estos van en el footer, contacto y encabezado.)_
 ---
 
 ### PROYECTO 01
-- **Nombre del proyecto**:
-- **Cliente**:
-- **¿Mostrar nombre del cliente?** (sí/no — si no, sector):
-- **Sector / industria**:
-- **Tipo** (web / automatización n8n / ERP-CRM / app / producto / I+D / otro):
-- **Problema que tenían**:
-- **Qué construimos**:
-- **Tecnologías / stack**:
-- **Resultado** (solo si es verificable):
-- **URL en vivo**:
-- **Imágenes** (nombres de archivo):
+- **Nombre del proyecto**: CONTROL DE ASISTENSIA
+- **Cliente**: MASERVIT
+- **¿Mostrar nombre del cliente?** SI
+- **Sector / industria**: METALMECANICA
+- **Tipo** (web / automatización n8n / ERP-CRM / app / producto / I+D / otro): WEB APP + INTEGRACION DE HIKVISION DISPOSITIVO
+- **Problema que tenían**: DEMORA EN CONTROL DE ASISTENCIA, LO HACIAN MEDIANTE CAMARAS Y DEMORABAN MUCHO TIEMPO
+- **Qué construimos**: WEB APP, DESPLEGAA EN DOCKER EN EL MISMO SERVIDOR DE LA EMPRESA
+- **Tecnologías / stack**: NEXT.JS , PostgreSQL, 
+- **Resultado** (solo si es verificable): MEJORA EN TIEMPOS DE CONTROL 
+- **URL en vivo**: PRIVADO
+- **Imágenes** (nombres de archivo):  C:\Users\Daniel\Documents\Apps\LAVI-CO\public\media\Proyectos\MASERVIT.png
 - **Testimonio del cliente** (opcional):
-- **Duración / fecha**:
+- **Duración / fecha**: 1 SEMANA - 2026 
 
 ### PROYECTO 02
-- **Nombre del proyecto**:
-- **Cliente**:
-- **¿Mostrar nombre del cliente?** (sí/no — si no, sector):
-- **Sector / industria**:
-- **Tipo** (web / automatización n8n / ERP-CRM / app / producto / I+D / otro):
-- **Problema que tenían**:
-- **Qué construimos**:
-- **Tecnologías / stack**:
-- **Resultado** (solo si es verificable):
-- **URL en vivo**:
-- **Imágenes** (nombres de archivo):
+- **Nombre del proyecto**: PAGINA WEB - E COMERCE
+- **Cliente**: VITORA
+- **¿Mostrar nombre del cliente?** SI
+- **Sector / industria**: FLORERIA
+- **Tipo** WEB
+- **Problema que tenían**: 
+- **Qué construimos**: PAGINA WEB, CON PASARELA DE PAGO A YAPE, 
+- **Tecnologías / stack**: SHOPIFY
+- **Resultado** (solo si es verificable): MAYOR VENTAS POR WEB
+- **URL en vivo**: WWW.VITORA.PE
+- **Imágenes** (nombres de archivo):C:\Users\Daniel\Documents\Apps\LAVI-CO\public\media\Proyectos\WEB FLORERIA VITORA.png
 - **Testimonio del cliente** (opcional):
-- **Duración / fecha**:
+- **Duración / fecha**: 30 dias - 2025
 
 ### PROYECTO 03
-- **Nombre del proyecto**:
-- **Cliente**:
-- **¿Mostrar nombre del cliente?** (sí/no — si no, sector):
-- **Sector / industria**:
+- **Nombre del proyecto**: OPTIMIZACION DE FABRICACION DE BARANDAS INOX 
+- **Cliente**: PRIVADO
+- **¿Mostrar nombre del cliente?** (sí/no — si no, sector): NO
+- **Sector / industria**: METALMECANICA
 - **Tipo** (web / automatización n8n / ERP-CRM / app / producto / I+D / otro):
 - **Problema que tenían**:
-- **Qué construimos**:
-- **Tecnologías / stack**:
+- **Qué construimos**: App para poder ver el estado de consturccion debarandas, anteriormente usaban excel para esto demorando mas y solo podian verlo pasandose el archivo y actualziarlo, ahora en la web peuden ver los resultados en tiemoo real 
+- **Tecnologías / stack**: PYTHON BACKEND, FORNTEND REACT , DB SUPABASE
 - **Resultado** (solo si es verificable):
-- **URL en vivo**:
-- **Imágenes** (nombres de archivo):
+- **URL en vivo**: NO
+- **Imágenes** (nombres de archivo): C:\Users\Daniel\Documents\Apps\LAVI-CO\public\media\Proyectos\BARANDAS (2).png  C:\Users\Daniel\Documents\Apps\LAVI-CO\public\media\Proyectos\BARANDAS (3).png C:\Users\Daniel\Documents\Apps\LAVI-CO\public\media\Proyectos\BARANDAS.png
+- **Testimonio del cliente** (opcional):
+- **Duración / fecha**: 1 semana - 2026
+
+### PROYECTO 04
+- **Nombre del proyecto**: MENTALABS
+- **Cliente**: MENTALABS
+- **¿Mostrar nombre del cliente?** (sí/no — si no, sector):SI
+- **Sector / industria**: PSICOLOGIA
+- **Tipo** WEB APP
+- **Problema que tenían**: ORGANIZAR NEGOCIO, INTEGRAL , ES UN ERP
+- **Qué construimos**: MVP PARA STARTUP MENTALABS
+- **Tecnologías / stack**: NEXT JS, SUPABASE
+- **Resultado** (solo si es verificable):
+- **URL en vivo**: 
+- **Imágenes** (nombres de archivo): C:\Users\Daniel\Documents\Apps\LAVI-CO\public\media\Proyectos\MENTALABS (2).png
+C:\Users\Daniel\Documents\Apps\LAVI-CO\public\media\Proyectos\MENTALABS.png
 - **Testimonio del cliente** (opcional):
 - **Duración / fecha**:
 
-### PROYECTO 04
-- **Nombre del proyecto**:
-- **Cliente**:
-- **¿Mostrar nombre del cliente?** (sí/no — si no, sector):
-- **Sector / industria**:
-- **Tipo** (web / automatización n8n / ERP-CRM / app / producto / I+D / otro):
-- **Problema que tenían**:
-- **Qué construimos**:
-- **Tecnologías / stack**:
-- **Resultado** (solo si es verificable):
-- **URL en vivo**:
-- **Imágenes** (nombres de archivo):
-- **Testimonio del cliente** (opcional):
-- **Duración / fecha**:

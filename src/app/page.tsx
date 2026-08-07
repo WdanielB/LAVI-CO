@@ -16,28 +16,24 @@ const nav = [
 
 const works = [
   {
-    name: "Plataforma Torre de Control",
-    summary: "Despacho y visibilidad en una sola interfaz.",
-    focus: "Operaciones en vivo",
-    caseId: "case-ops",
+    name: "Control de asistencia — Maservit",
+    summary: "Web app con integración de cámaras Hikvision, desplegada en el servidor de la empresa.",
+    caseId: "case-maservit",
   },
   {
-    name: "Workflows con n8n",
-    summary: "Automatización de back-office con triggers, APIs e integraciones.",
-    focus: "Back-office automatizado",
-    caseId: "case-n8n",
+    name: "Tienda online — Vitora",
+    summary: "E-commerce para una florería con pasarela de pago Yape.",
+    caseId: "case-vitora",
   },
   {
-    name: "ERP/CRM a medida",
-    summary: "Módulos pegados al proceso real, no al manual genérico.",
-    focus: "Herramientas a medida",
-    caseId: "case-erp",
+    name: "Seguimiento de fabricación",
+    summary: "Reemplazo de Excel por una app con estado de producción en tiempo real.",
+    caseId: "case-barandas",
   },
   {
-    name: "I+D Desarrollo de Productos",
-    summary: "Ciclo de producto desde brief hasta prototipo validado con trazabilidad de fases.",
-    focus: "Desarrollo de producto",
-    caseId: "case-id",
+    name: "MVP — Mentalabs",
+    summary: "Producto inicial tipo ERP para una startup de psicología.",
+    caseId: "case-mentalabs",
   },
 ];
 
@@ -351,29 +347,20 @@ export default function Home() {
                     }`}
                   >
                       <div>
-                        <div className="mb-4 flex items-baseline justify-between gap-3">
-                          <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--lavi-accent)]">Frente de trabajo</p>
-                          <p className="font-mono text-xl font-medium tracking-[0.12em] text-white/50">0{i + 1}</p>
-                        </div>
+                        <p className="mb-4 font-mono text-xl font-medium tracking-[0.12em] text-white/50">0{i + 1}</p>
                         <h3 className="mb-3 text-balance font-serif text-2xl font-semibold leading-tight text-white sm:text-3xl">
                           {work.name}
                         </h3>
                         <p className="mb-6 max-w-xl text-sm leading-relaxed text-white/80">{work.summary}</p>
                       </div>
 
-                      <div className="border-t border-white/10 pt-5 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-                        <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-white/60">
-                          {work.focus}
-                        </p>
-
-                        <Link
-                          href={`/work#${work.caseId}`}
-                          className="group/link inline-flex items-center gap-3 border border-white/25 px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] text-white/80 transition-colors hover:border-[var(--lavi-accent)] hover:text-white"
-                        >
-                          <span>Ver caso completo</span>
-                          <span aria-hidden className="transition-transform duration-300 group-hover/link:translate-x-0.5">→</span>
-                        </Link>
-                      </div>
+                      <Link
+                        href={`/work#${work.caseId}`}
+                        className="group/link inline-flex w-fit items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-white/70 transition-colors hover:text-white"
+                      >
+                        <span>Ver caso completo</span>
+                        <span aria-hidden className="transition-transform duration-300 group-hover/link:translate-x-0.5">→</span>
+                      </Link>
                   </motion.article>
                 );
               })}
@@ -406,23 +393,13 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-10%" }}
                   transition={{ duration: 0.8, delay: i * 0.12, ease }}
-                  className="group flex h-full min-h-[200px] flex-col justify-between border-t border-white/25 pt-6 transition-colors duration-300 hover:border-[var(--lavi-accent)]"
+                  className="group flex h-full min-h-[160px] flex-col border-t border-white/25 pt-6 transition-colors duration-300 hover:border-[var(--lavi-accent)]"
                 >
-                    <div>
-                      <p className="mb-4 font-mono text-sm font-semibold text-[var(--lavi-accent)] select-none">
-                        0{i + 1}
-                      </p>
-                      <h4 className="mb-2 font-serif text-2xl font-semibold leading-tight text-white">{service.title}</h4>
-                      <p className="text-sm leading-relaxed text-white/80">{service.approach}</p>
-                    </div>
-                    <div className="mt-6 border-t border-white/8 pt-4 flex justify-between items-center">
-                      <span className="text-[11px] font-mono uppercase tracking-[0.16em] text-white/50 group-hover:text-white/80 transition-colors">
-                        Explorar enfoque
-                      </span>
-                      <span aria-hidden className="text-white/60 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:text-white select-none">
-                        →
-                      </span>
-                    </div>
+                    <p className="mb-4 font-mono text-sm font-semibold text-[var(--lavi-accent)] select-none">
+                      0{i + 1}
+                    </p>
+                    <h4 className="mb-2 font-serif text-2xl font-semibold leading-tight text-white">{service.title}</h4>
+                    <p className="text-sm leading-relaxed text-white/80">{service.approach}</p>
                 </motion.article>
               ))}
             </div>
@@ -432,23 +409,15 @@ export default function Home() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.4, ease }}
-              className="mt-12 flex flex-col items-stretch gap-4 border-t border-white/12 pt-8 sm:flex-row sm:flex-wrap sm:items-center"
+              className="mt-12 border-t border-white/12 pt-8"
             >
-              {/* Button-in-Button CTA */}
-              <Link
-                href="/contact"
-                className="group inline-flex items-center justify-center gap-3 bg-white px-6 py-3 text-xs font-semibold uppercase tracking-[0.15em] text-black transition-colors hover:bg-white/90 outline-none"
-              >
-                <span>Agenda una llamada</span>
-                <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-0.5 select-none">→</span>
-              </Link>
               <Link
                 href="/services"
-                className="inline-flex items-center justify-center border border-white/25 px-6 py-3 text-xs font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-white/5 outline-none"
+                className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-white/70 transition-colors hover:text-white"
               >
-                Ver servicios
+                <span>Ver todos los servicios</span>
+                <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-0.5 select-none">→</span>
               </Link>
-              <p className="text-center text-sm text-white/65 sm:text-left select-none">Respuesta inicial con próximos pasos concretos.</p>
             </motion.div>
           </section>
 

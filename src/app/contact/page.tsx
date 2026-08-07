@@ -12,8 +12,7 @@ export const metadata: Metadata = {
 };
 
 const MAILTO = "mailto:contacto@lavi.lat?subject=Consulta%20LAVI%20%26%20CO";
-// TODO: reemplazar con el número real de WhatsApp Business antes de publicar el botón.
-// const WHATSAPP = "https://wa.me/51XXXXXXXXX";
+const WHATSAPP = "https://wa.me/51946689538";
 
 export default function ContactPage() {
   return (
@@ -37,13 +36,24 @@ export default function ContactPage() {
                 somos el fit correcto, te lo decimos en esa primera llamada.
               </p>
             </div>
-            <a
-              href={MAILTO}
-              className="group inline-flex shrink-0 items-center gap-3 bg-white px-6 py-3 text-[13px] font-semibold text-black transition-colors hover:bg-white/90"
-            >
-              <span>Escríbenos por correo</span>
-              <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
-            </a>
+            <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
+              <a
+                href={WHATSAPP}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center justify-center gap-3 bg-white px-6 py-3 text-[13px] font-semibold text-black transition-colors hover:bg-white/90"
+              >
+                <span>Escríbenos por WhatsApp</span>
+                <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
+              </a>
+              <a
+                href={MAILTO}
+                className="group inline-flex items-center justify-center gap-3 border border-white/25 px-6 py-3 text-[13px] font-semibold text-white transition-colors hover:bg-white/5"
+              >
+                <span>Escríbenos por correo</span>
+                <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
+              </a>
+            </div>
           </div>
         </Reveal>
       </section>

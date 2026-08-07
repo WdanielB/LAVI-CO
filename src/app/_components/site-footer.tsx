@@ -49,14 +49,31 @@ export function SiteFooter() {
 
           <div>
             <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/55">Contacto</p>
-            <a
-              href="mailto:contacto@lavi.lat"
-              className="text-sm font-medium text-white underline-offset-4 transition-colors hover:underline"
-            >
-              contacto@lavi.lat
-            </a>
-            <p className="mt-3 text-sm text-white/65">Industria y mype en general</p>
-            <p className="mt-1 text-sm text-white/65">Respuesta en 1 día hábil</p>
+            <div className="flex flex-col gap-2.5 text-sm">
+              <a
+                href="mailto:contacto@lavi.lat"
+                className="font-medium text-white underline-offset-4 transition-colors hover:underline"
+              >
+                contacto@lavi.lat
+              </a>
+              <a
+                href="https://wa.me/51946689538"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/80 underline-offset-4 transition-colors hover:text-white hover:underline"
+              >
+                WhatsApp: +51 946 689 538
+              </a>
+              <a
+                href="https://instagram.com/lavi.latam"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/80 underline-offset-4 transition-colors hover:text-white hover:underline"
+              >
+                @lavi.latam
+              </a>
+            </div>
+            <p className="mt-4 text-sm text-white/65">Respuesta en 1 día hábil</p>
           </div>
         </div>
 
