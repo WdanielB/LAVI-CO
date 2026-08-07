@@ -64,10 +64,6 @@ export default function LogisticaPage() {
             "Priorización automática de salidas por ventana comprometida.",
             "Historial trazable de cada excepción y su resolución.",
           ]}
-          media={{
-            src: "/media/tecnic-bioprocess-solutions-SQkt_CJ-ARs-unsplash.jpg",
-            alt: "Contexto industrial que representa una torre de control de despacho",
-          }}
         />
         <SplitFeature
           eyebrow="02 · Inventario"
@@ -78,11 +74,6 @@ export default function LogisticaPage() {
             "Órdenes de reposición generadas y enviadas sin digitación.",
             "Cobertura de stock visible por SKU y por centro.",
           ]}
-          media={{
-            src: "/media/american-public-power-association-bv2pvCGMtzg-unsplash.jpg",
-            alt: "Infraestructura conectada que representa el motor de reposición automática",
-          }}
-          reverse
         />
         <SplitFeature
           eyebrow="03 · Gestión"
@@ -93,10 +84,6 @@ export default function LogisticaPage() {
             "Alertas de desvío con umbral configurable por gerencia.",
             "Lectura diaria en 5 minutos, sin armar reportes a mano.",
           ]}
-          media={{
-            src: "/media/jonan-steiner-exwO5Ssl6-U-unsplash.jpg",
-            alt: "Imagen editorial que representa el tablero unificado de servicio y costo",
-          }}
         />
       </section>
 

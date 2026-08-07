@@ -23,9 +23,9 @@ export default function WorkPage() {
       />
 
       <CardGrid
-        eyebrow="Seis frentes de trabajo"
-        title="Seis frentes, un mismo estándar de ejecución."
-        description="Operaciones, comercial, workflows con n8n, ERP/CRM a medida, automatización e I+D. Cada frente: cuándo aparece, qué construimos y qué resuelve."
+        eyebrow="Cuatro frentes de trabajo"
+        title="Cuatro frentes, un mismo estándar de ejecución."
+        description="Operaciones, workflows con n8n, ERP/CRM a medida e I+D. Cada frente: cuándo aparece, qué construimos y qué resuelve."
         items={[
           {
             id: "case-ops",
@@ -43,26 +43,6 @@ export default function WorkPage() {
               {
                 label: "Qué resuelve",
                 text: "Menos intervenciones urgentes al centralizar las reglas de ruta y servicio, con visibilidad gerencial sin trabajo extra de reporte.",
-                highlight: true,
-              },
-            ],
-          },
-          {
-            id: "case-growth",
-            eyebrow: "Comercial",
-            title: "Sitios y experiencias comerciales que sí venden",
-            rows: [
-              {
-                label: "Cuándo",
-                text: "Un sitio comercial que cuenta mucho y vende poco: sin jerarquía clara de mensaje ni recorrido de compra.",
-              },
-              {
-                label: "Qué construimos",
-                text: "Arquitectura de información alrededor de la intención de compra: cada sección con una sola tarea y una medida de éxito.",
-              },
-              {
-                label: "Qué resuelve",
-                text: "Mejor calidad del interés entrante al ordenar la narrativa y alinear los CTAs con el recorrido real del comprador.",
                 highlight: true,
               },
             ],
@@ -103,26 +83,6 @@ export default function WorkPage() {
               {
                 label: "Qué resuelve",
                 text: "El equipo trabaja cada orden en una interfaz hecha para su flujo real, con menos clics y menos errores, sin migrar el ERP.",
-                highlight: true,
-              },
-            ],
-          },
-          {
-            id: "case-automation",
-            eyebrow: "Automatización",
-            title: "Despliegue de automatización sin frenar al equipo",
-            rows: [
-              {
-                label: "Cuándo",
-                text: "La operación necesita automatizar rutas críticas sin detener el trabajo diario ni forzar una migración.",
-              },
-              {
-                label: "Qué construimos",
-                text: "Mapeamos las rutas críticas primero, mantenemos la interfaz estable y cambiamos el backend por debajo, midiendo el avance semana a semana.",
-              },
-              {
-                label: "Qué resuelve",
-                text: "La automatización entra como una mejora del sistema y no como una migración forzada, con adopción gradual y control en cada paso.",
                 highlight: true,
               },
             ],

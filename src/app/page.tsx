@@ -34,12 +34,6 @@ const works = [
     caseId: "case-erp",
   },
   {
-    name: "Sistema de Flujo de Planta",
-    summary: "Trazabilidad operativa de punta a punta.",
-    focus: "Trazabilidad de planta",
-    caseId: "case-automation",
-  },
-  {
     name: "I+D Desarrollo de Productos",
     summary: "Ciclo de producto desde brief hasta prototipo validado con trazabilidad de fases.",
     focus: "Desarrollo de producto",

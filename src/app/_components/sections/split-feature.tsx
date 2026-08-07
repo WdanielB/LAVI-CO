@@ -6,7 +6,7 @@ type SplitFeatureProps = {
   title: string;
   body: string;
   bullets?: string[];
-  media: { src: string; alt: string };
+  media?: { src: string; alt: string };
   reverse?: boolean;
   metric?: { value: string; label: string };
 };
@@ -16,9 +16,13 @@ export function SplitFeature({ eyebrow, title, body, bullets, media, reverse, me
     <div className="container mx-auto max-w-[1440px] px-5 pb-12 sm:px-6 md:px-12 md:pb-16 lg:px-20">
       <Reveal>
         <div
-          className={`grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12 ${
-            reverse ? "lg:[&>*:first-child]:order-2" : ""
-          }`}
+          className={
+            media
+              ? `grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12 ${
+                  reverse ? "lg:[&>*:first-child]:order-2" : ""
+                }`
+              : "max-w-2xl"
+          }
         >
           <div>
             {eyebrow && (
@@ -52,15 +56,17 @@ export function SplitFeature({ eyebrow, title, body, bullets, media, reverse, me
               </p>
             )}
           </div>
-          <div className="overflow-hidden border border-white/10">
-            <Image
-              src={media.src}
-              alt={media.alt}
-              width={960}
-              height={640}
-              className="aspect-[3/2] w-full object-cover"
-            />
-          </div>
+          {media && (
+            <div className="overflow-hidden border border-white/10">
+              <Image
+                src={media.src}
+                alt={media.alt}
+                width={960}
+                height={640}
+                className="aspect-[3/2] w-full object-cover"
+              />
+            </div>
+          )}
         </div>
       </Reveal>
     </div>
