@@ -21,7 +21,7 @@ const works = [
     caseId: "case-maservit",
   },
   {
-    name: "Tienda online — Vitora",
+    name: "Floralite — Vitora",
     summary: "E-commerce para una florería con pasarela de pago Yape.",
     caseId: "case-vitora",
   },
@@ -242,7 +242,7 @@ export default function Home() {
               loop
               playsInline
               preload="metadata"
-              poster="/media/abstract-logistic-placeholder.jpg"
+              poster="/media/hero-poster.jpg"
               className="h-full w-full object-cover opacity-80"
             >
               <source src="/media/34317-400974371_medium.mp4" type="video/mp4" />

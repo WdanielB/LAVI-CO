@@ -66,11 +66,11 @@ export default function WorkPage() {
           {
             id: "case-vitora",
             eyebrow: "Florería · Vitora",
-            title: "Tienda online con pago por Yape",
+            title: "Floralite — tienda online con pago por Yape",
             media: (
               <Image
                 src="/media/Proyectos/vitora.png"
-                alt="Tienda online de la florería Vitora"
+                alt="Floralite, la tienda online de la florería Vitora"
                 width={960}
                 height={640}
                 className="aspect-[3/2] w-full object-cover"
