@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { breadcrumbJsonLd, jsonLd, pageMetadata } from "@/lib/site";
 import { SiteChrome } from "../_components/site-chrome";
 import { PageHero } from "../_components/sections/page-hero";
 import { CardGrid } from "../_components/sections/card-grid";
@@ -6,15 +7,20 @@ import { SectionHeading } from "../_components/sections/section-heading";
 import { Reveal } from "../_components/sections/reveal";
 import { CtaBanner } from "../_components/sections/cta-banner";
 
-export const metadata: Metadata = {
-  title: "Nosotros | LAVI & CO",
+export const metadata: Metadata = pageMetadata({
+  title: "Nosotros: estudio de desarrollo operativo en Arequipa",
   description:
     "Estudio de diseño y desarrollo operativo en Arequipa, Perú. Equipo pequeño, cerca del problema, con entregas que siguen funcionando después del lanzamiento.",
-};
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (
     <SiteChrome>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={jsonLd(breadcrumbJsonLd([{ name: "Nosotros", path: "/about" }]))}
+      />
       <PageHero
         eyebrow="Nosotros"
         title="Somos un equipo pequeño. Eso es a propósito."

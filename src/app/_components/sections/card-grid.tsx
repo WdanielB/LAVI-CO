@@ -5,6 +5,7 @@ import { SectionHeading } from "./section-heading";
 export type CardRow = {
   label: string;
   text: string;
+  href?: string;
   highlight?: boolean;
 };
 
@@ -75,7 +76,19 @@ export function CardGrid({ eyebrow, title, description, items, columns = 2 }: Ca
                       >
                         {row.label}
                       </span>
-                      {row.text}
+                      {row.href ? (
+                        <a
+                          href={row.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline decoration-white/30 underline-offset-4 transition-colors hover:text-white hover:decoration-[var(--lavi-accent)]"
+                        >
+                          {row.text}
+                          <span className="sr-only"> (se abre en una pestaña nueva)</span>
+                        </a>
+                      ) : (
+                        row.text
+                      )}
                     </p>
                   ))}
                 </div>

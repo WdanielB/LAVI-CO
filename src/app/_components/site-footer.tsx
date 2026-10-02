@@ -14,7 +14,7 @@ export function SiteFooter() {
       className="relative z-10 border-t border-white/10 bg-[rgba(5,8,12,0.92)]"
     >
       <div className="container mx-auto max-w-[1440px] px-5 py-12 sm:px-6 md:px-12 lg:px-20 lg:py-16">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 xl:grid-cols-[1.4fr_1fr_1fr] xl:gap-12">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 xl:grid-cols-[1.4fr_1fr_1fr_1fr] xl:gap-12">
           <div>
             <Image
               src="/media/logos/lavi-logo-outline-light.png"
@@ -36,7 +36,17 @@ export function SiteFooter() {
             </div>
           </div>
 
-          <div>
+          <nav aria-label="Servicios">
+            <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/55">Servicios</p>
+            <div className="flex flex-col gap-2.5 text-sm text-white/80">
+              <Link href="/services#automatizacion" className="transition-colors hover:text-white">Automatización con n8n</Link>
+              <Link href="/services#erp-crm-a-medida" className="transition-colors hover:text-white">ERP y CRM a medida</Link>
+              <Link href="/services#desarrollo-de-producto" className="transition-colors hover:text-white">Desarrollo de MVP</Link>
+              <Link href="/logistica" className="transition-colors hover:text-white">Automatización logística</Link>
+            </div>
+          </nav>
+
+          <nav aria-label="Navegación del sitio">
             <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/55">Navegación</p>
             <div className="flex flex-col gap-2.5 text-sm text-white/80">
               <Link href="/work" className="transition-colors hover:text-white">Casos</Link>
@@ -45,7 +55,7 @@ export function SiteFooter() {
               <Link href="/about" className="transition-colors hover:text-white">Nosotros</Link>
               <Link href="/contact" className="transition-colors hover:text-white">Contacto</Link>
             </div>
-          </div>
+          </nav>
 
           <div>
             <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/55">Contacto</p>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { breadcrumbJsonLd, jsonLd, pageMetadata } from "@/lib/site";
 import { SiteChrome } from "../_components/site-chrome";
 import { PageHero } from "../_components/sections/page-hero";
 import { CardGrid } from "../_components/sections/card-grid";
@@ -7,15 +8,20 @@ import { SectionHeading } from "../_components/sections/section-heading";
 import { Steps } from "../_components/sections/steps";
 import { CtaBanner } from "../_components/sections/cta-banner";
 
-export const metadata: Metadata = {
-  title: "Logística | LAVI & CO",
+export const metadata: Metadata = pageMetadata({
+  title: "Automatización logística y control de despacho",
   description:
     "Sistemas para operaciones logísticas y de planta: torre de control de despacho, reposición automática por reglas y trazabilidad de punta a punta.",
-};
+  path: "/logistica",
+});
 
 export default function LogisticaPage() {
   return (
     <SiteChrome>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={jsonLd(breadcrumbJsonLd([{ name: "Logística", path: "/logistica" }]))}
+      />
       <PageHero
         eyebrow="Servicio B2B · Automatización logística"
         title="Menos quiebres de stock, despachos a tiempo y trazabilidad de punta a punta."

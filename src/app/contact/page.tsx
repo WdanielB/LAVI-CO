@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
+import { breadcrumbJsonLd, jsonLd, pageMetadata } from "@/lib/site";
 import { SiteChrome } from "../_components/site-chrome";
 import { PageHero } from "../_components/sections/page-hero";
 import { SectionHeading } from "../_components/sections/section-heading";
 import { Reveal } from "../_components/sections/reveal";
 import { Steps } from "../_components/sections/steps";
 
-export const metadata: Metadata = {
-  title: "Contacto | LAVI & CO",
+export const metadata: Metadata = pageMetadata({
+  title: "Contacto: agenda una llamada de 20 minutos",
   description:
     "Cuéntanos qué está frenando tu operación. Respondemos en un día hábil con un siguiente paso claro: llamada de 20 minutos y propuesta breve.",
-};
+  path: "/contact",
+});
 
 const MAILTO = "mailto:contacto@lavi.lat?subject=Consulta%20LAVI%20%26%20CO";
 const WHATSAPP = "https://wa.me/51946689538";
@@ -17,6 +19,10 @@ const WHATSAPP = "https://wa.me/51946689538";
 export default function ContactPage() {
   return (
     <SiteChrome>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={jsonLd(breadcrumbJsonLd([{ name: "Contacto", path: "/contact" }]))}
+      />
       <PageHero
         eyebrow="Contacto"
         title="Cuéntanos qué te está frenando. Respondemos en un día hábil."

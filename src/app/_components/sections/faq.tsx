@@ -1,3 +1,4 @@
+import { jsonLd } from "@/lib/site";
 import { SectionHeading } from "./section-heading";
 import { Reveal } from "./reveal";
 
@@ -14,8 +15,19 @@ type FaqProps = {
 };
 
 export function Faq({ eyebrow, title, description, items }: FaqProps) {
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
+  };
+
   return (
     <section className="container mx-auto max-w-[1440px] px-5 pb-16 sm:px-6 md:px-12 md:pb-20 lg:px-20">
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(faqJsonLd)} />
       {title && <SectionHeading eyebrow={eyebrow} title={title} description={description} />}
       <Reveal>
         <div className="max-w-3xl border-t border-white/25">

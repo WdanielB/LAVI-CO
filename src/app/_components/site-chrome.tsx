@@ -5,6 +5,7 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState, type ReactNode } from "react";
 import { usePathname } from "next/navigation";
+import { navItems } from "@/lib/site";
 import { SiteFooter } from "./site-footer";
 
 type SiteChromeProps = {
@@ -14,14 +15,6 @@ type SiteChromeProps = {
 export function SiteChrome({ children }: SiteChromeProps) {
   const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const navItems = [
-    { href: "/work", label: "Casos" },
-    { href: "/services", label: "Servicios" },
-    { href: "/logistica", label: "Logística" },
-    { href: "/about", label: "Nosotros" },
-    { href: "/contact", label: "Contacto" },
-  ];
 
   useEffect(() => {
     if (!isMobileMenuOpen) return;
@@ -51,7 +44,7 @@ export function SiteChrome({ children }: SiteChromeProps) {
           className="sticky top-0 z-50 w-full border-b border-white/8 bg-[linear-gradient(180deg,rgba(8,11,16,0.92),rgba(8,11,16,0.7))] backdrop-blur-xl"
         >
           <div className="flex w-full items-center justify-between gap-4 px-5 py-4 sm:px-6 md:px-12 md:py-5 lg:px-16">
-            <Link href="/" className="flex items-center transition-opacity hover:opacity-80">
+            <Link href="/" aria-label="LAVI & CO — Inicio" className="flex items-center transition-opacity hover:opacity-80">
               <Image
                 src="/media/logos/lavi-logo-outline-light.png"
                 alt="LAVI & CO"
@@ -62,7 +55,7 @@ export function SiteChrome({ children }: SiteChromeProps) {
               />
             </Link>
 
-            <nav className="hidden items-center gap-8 text-[13px] font-medium tracking-[0.02em] text-white/70 lg:flex xl:gap-10">
+            <nav aria-label="Principal" className="hidden items-center gap-8 text-[13px] font-medium tracking-[0.02em] text-white/70 lg:flex xl:gap-10">
               {navItems.map((item) => {
                 const isActive = pathname === item.href;
                 return (
@@ -175,7 +168,9 @@ export function SiteChrome({ children }: SiteChromeProps) {
           </AnimatePresence>
         </motion.header>
 
-        <div className="relative z-10">{children}</div>
+        <main id="contenido" tabIndex={-1} className="relative z-10 outline-none">
+          {children}
+        </main>
 
         <SiteFooter />
       </div>

@@ -1,19 +1,25 @@
 import type { Metadata } from "next";
+import { breadcrumbJsonLd, jsonLd, pageMetadata } from "@/lib/site";
 import Image from "next/image";
 import { SiteChrome } from "../_components/site-chrome";
 import { PageHero } from "../_components/sections/page-hero";
 import { CardGrid } from "../_components/sections/card-grid";
 import { CtaBanner } from "../_components/sections/cta-banner";
 
-export const metadata: Metadata = {
-  title: "Casos | LAVI & CO",
+export const metadata: Metadata = pageMetadata({
+  title: "Casos reales de software y automatización",
   description:
     "Proyectos reales de LAVI & CO: control de asistencia con integración Hikvision, tienda online, seguimiento de producción en tiempo real y MVP de producto.",
-};
+  path: "/work",
+});
 
 export default function WorkPage() {
   return (
     <SiteChrome>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={jsonLd(breadcrumbJsonLd([{ name: "Casos", path: "/work" }]))}
+      />
       <PageHero
         eyebrow="Proyectos"
         title="Lo que hemos construido para clientes reales."
@@ -97,6 +103,7 @@ export default function WorkPage() {
               {
                 label: "Sitio",
                 text: "vitora.pe",
+                href: "https://vitora.pe",
               },
             ],
           },

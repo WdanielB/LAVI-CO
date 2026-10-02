@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { breadcrumbJsonLd, jsonLd, pageMetadata } from "@/lib/site";
 import { SiteChrome } from "../_components/site-chrome";
 import { PageHero } from "../_components/sections/page-hero";
 import { CardGrid } from "../_components/sections/card-grid";
@@ -6,15 +7,20 @@ import { Steps } from "../_components/sections/steps";
 import { Faq } from "../_components/sections/faq";
 import { CtaBanner } from "../_components/sections/cta-banner";
 
-export const metadata: Metadata = {
-  title: "Servicios | LAVI & CO",
+export const metadata: Metadata = pageMetadata({
+  title: "Servicios: automatización con n8n, ERP y CRM a medida",
   description:
     "Automatización con n8n, ERP y CRM a medida, desarrollo de producto e I+D aplicada. Diagnóstico en días, primer release en semanas.",
-};
+  path: "/services",
+});
 
 export default function ServicesPage() {
   return (
     <SiteChrome>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={jsonLd(breadcrumbJsonLd([{ name: "Servicios", path: "/services" }]))}
+      />
       <PageHero
         eyebrow="Servicios"
         title="Software y automatización a la medida de tu operación — no al revés."
@@ -29,6 +35,7 @@ export default function ServicesPage() {
         title="Cuatro servicios, un objetivo: que tu equipo deje de hacer trabajo de máquina."
         items={[
           {
+            id: "automatizacion",
             eyebrow: "01 · Automatización",
             title: "Automatización con n8n",
             rows: [
@@ -48,6 +55,7 @@ export default function ServicesPage() {
             ],
           },
           {
+            id: "erp-crm-a-medida",
             eyebrow: "02 · Herramientas a medida",
             title: "ERP, CRM y portales internos",
             rows: [
@@ -67,6 +75,7 @@ export default function ServicesPage() {
             ],
           },
           {
+            id: "desarrollo-de-producto",
             eyebrow: "03 · Producto",
             title: "Desarrollo de producto y MVP",
             rows: [
