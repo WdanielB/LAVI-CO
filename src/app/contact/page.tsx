@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { breadcrumbJsonLd, jsonLd, pageMetadata } from "@/lib/site";
+import { breadcrumbJsonLd, jsonLd, mailtoLink, pageMetadata, whatsappLink } from "@/lib/site";
 import { SiteChrome } from "../_components/site-chrome";
 import { PageHero } from "../_components/sections/page-hero";
 import { SectionHeading } from "../_components/sections/section-heading";
@@ -13,8 +13,8 @@ export const metadata: Metadata = pageMetadata({
   path: "/contact",
 });
 
-const MAILTO = "mailto:contacto@lavi.lat?subject=Consulta%20LAVI%20%26%20CO";
-const WHATSAPP = "https://wa.me/51946689538";
+const MAILTO = mailtoLink("Consulta LAVI & CO");
+const WHATSAPP = whatsappLink("Hola LAVI & CO, quiero agendar una llamada de 20 minutos para contarles sobre mi operación.");
 
 export default function ContactPage() {
   return (

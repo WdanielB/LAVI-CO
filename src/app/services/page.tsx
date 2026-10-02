@@ -173,7 +173,7 @@ export default function ServicesPage() {
       <CtaBanner
         title="Cuéntanos qué tarea le roba más horas a tu equipo."
         body="En una llamada de 20 minutos te decimos si se puede automatizar, qué tomaría construirlo y si somos el fit correcto."
-        primaryCta={{ label: "Agenda una llamada", href: "/contact" }}
+        whatsappMessage="Hola LAVI & CO, quiero contarles qué tarea le roba más horas a mi equipo."
         secondaryCta={{ label: "Ver casos", href: "/work" }}
       />
     </SiteChrome>

@@ -14,38 +14,24 @@ import {
   useTransform,
 } from "framer-motion";
 import { navItems as nav } from "@/lib/site";
+import { projects } from "@/lib/projects";
+import { CtaBanner } from "./sections/cta-banner";
 import { SiteFooter } from "./site-footer";
 
-const works = [
-  {
-    name: "Control de asistencia — Maservit",
-    summary: "Web app con integración de cámaras Hikvision, desplegada en el servidor de la empresa.",
-    caseId: "case-maservit",
-    icon: "clock",
-    image: { src: "/media/Proyectos/maservit.png", alt: "Web app de control de asistencia de Maservit" },
-  },
-  {
-    name: "Floralite — Vitora",
-    summary: "E-commerce para una florería con pasarela de pago Yape.",
-    caseId: "case-vitora",
-    icon: "leaf",
-    image: { src: "/media/Proyectos/vitora.png", alt: "Tienda online Floralite de la florería Vitora" },
-  },
-  {
-    name: "Seguimiento de fabricación",
-    summary: "Reemplazo de Excel por una app con estado de producción en tiempo real.",
-    caseId: "case-barandas",
-    icon: "pulse",
-    image: { src: "/media/Proyectos/barandas-1.png", alt: "Panel de seguimiento de fabricación en tiempo real" },
-  },
-  {
-    name: "MVP — Mentalabs",
-    summary: "Producto inicial tipo ERP para una startup de psicología.",
-    caseId: "case-mentalabs",
-    icon: "layers",
-    image: { src: "/media/Proyectos/mentalabs-1.png", alt: "MVP de producto de la startup Mentalabs" },
-  },
-] as const;
+const workIcons: Record<string, IconName> = {
+  "case-maservit": "clock",
+  "case-vitora": "leaf",
+  "case-barandas": "pulse",
+  "case-mentalabs": "layers",
+};
+
+const works = projects.map((project) => ({
+  name: project.title,
+  summary: project.summary,
+  caseId: project.id,
+  icon: workIcons[project.id] ?? "grid",
+  image: project.images[0],
+}));
 
 const services = [
   {
@@ -699,49 +685,13 @@ export function HomeView() {
             </motion.div>
           </section>
 
-          {/* Double-Bezel CTA Contact Section */}
-          <section className="mx-auto w-full max-w-[1440px] px-5 py-24 sm:px-6 sm:py-32 md:px-12 md:py-40 lg:px-20" id="contact">
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-10%" }}
-              transition={{ duration: 0.8, ease }}
-              className="border-y-2 border-[var(--lavi-accent)] py-10 md:py-14"
-            >
-                <div className="grid gap-8 lg:grid-cols-[1.3fr_0.7fr] lg:items-end">
-                  <div>
-                    <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-white/65 sm:text-xs">Siguiente paso</p>
-                    <h2 className="mb-4 max-w-2xl text-balance font-serif text-3xl leading-[1.02] sm:text-4xl md:text-5xl">
-                      Hacemos tu operación más simple.
-                    </h2>
-                    <p className="max-w-xl text-sm leading-relaxed text-white/75 sm:text-base">
-                      Una conversación breve es suficiente para mapear el primer movimiento. Sin formularios largos ni decks gigantes.
-                    </p>
-                    <p className="mt-4 text-sm text-white/60 font-mono">contacto@lavi.lat · LATAM</p>
-                  </div>
-                  <div className="flex flex-col gap-3">
-                    <Link
-                      href="/contact"
-                      className="group inline-flex items-center justify-between gap-3 bg-white py-2 pl-6 pr-2 text-xs font-semibold uppercase tracking-[0.15em] text-black transition-colors hover:bg-white/90 outline-none"
-                    >
-                      <span>Agenda una llamada</span>
-                      <span
-                        aria-hidden
-                        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-black/10 normal-case tracking-normal transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-0.5 group-hover:bg-black group-hover:text-white"
-                      >
-                        →
-                      </span>
-                    </Link>
-                    <a
-                      href="mailto:contacto@lavi.lat?subject=Consulta%20LAVI%20%26%20CO"
-                      className="inline-flex items-center justify-center border border-white/25 px-6 py-3 text-xs font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-white/5 outline-none"
-                    >
-                      Escríbenos por correo
-                    </a>
-                  </div>
-                </div>
-            </motion.div>
-          </section>
+          <div id="contact" className="scroll-mt-24 pt-8">
+            <CtaBanner
+              title="Hacemos tu operación más simple."
+              body="Una conversación breve es suficiente para mapear el primer movimiento. Sin formularios largos ni decks gigantes."
+              secondaryCta={{ label: "Ver cómo trabajamos", href: "/contact" }}
+            />
+          </div>
         </div>
       </div>
       </main>

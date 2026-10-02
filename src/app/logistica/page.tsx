@@ -119,7 +119,7 @@ export default function LogisticaPage() {
       <CtaBanner
         title="¿Tu operación creció más rápido que tu sistema?"
         body="Cuéntanos cómo mueves stock y despachos hoy. En una llamada de 20 minutos te decimos qué pieza tendría el mayor impacto."
-        primaryCta={{ label: "Agenda una llamada", href: "/contact" }}
+        whatsappMessage="Hola LAVI & CO, quiero mejorar el control de stock y despachos de mi operación."
         secondaryCta={{ label: "Ver casos", href: "/work" }}
       />
     </SiteChrome>

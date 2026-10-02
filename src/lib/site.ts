@@ -22,6 +22,15 @@ export const navItems = [
   { href: "/contact", label: "Contacto" },
 ] as const;
 
+/** WhatsApp chat link with a prefilled message. */
+export function whatsappLink(message: string) {
+  return `${siteConfig.whatsapp}?text=${encodeURIComponent(message)}`;
+}
+
+export function mailtoLink(subject: string) {
+  return `mailto:${siteConfig.email}?subject=${encodeURIComponent(subject)}`;
+}
+
 /** Serializes JSON-LD safely for a <script> tag (escapes `<` to avoid breaking out of the tag). */
 export function jsonLd(data: unknown) {
   return { __html: JSON.stringify(data).replace(/</g, "\\u003c") };

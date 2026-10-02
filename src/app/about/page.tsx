@@ -102,7 +102,7 @@ export default function AboutPage() {
 
       <CtaBanner
         title="Una llamada de 20 minutos define si tiene sentido trabajar juntos."
-        primaryCta={{ label: "Agenda una llamada", href: "/contact" }}
+        whatsappMessage="Hola LAVI & CO, quiero agendar una llamada de 20 minutos para ver si tiene sentido trabajar juntos."
         secondaryCta={{ label: "Ver casos", href: "/work" }}
       />
     </SiteChrome>
