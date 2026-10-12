@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Reveal } from "./reveal";
+import { ROW_GRID, Section } from "./section";
 import { SectionHeading } from "./section-heading";
 
 export type CardRow = {
@@ -25,78 +26,75 @@ type CardGridProps = {
   title?: string;
   description?: string;
   items: CardItem[];
+  /** Kept for callers; the list is always a single table. */
   columns?: 2 | 3;
 };
 
-export function CardGrid({ eyebrow, title, description, items, columns = 2 }: CardGridProps) {
-  const gridCols = columns === 3 ? "lg:grid-cols-3" : "lg:grid-cols-2";
+const index = (i: number) => String(i + 1).padStart(2, "0");
 
+function RowText({ row }: { row: CardRow }) {
+  if (!row.href) return <>{row.text}</>;
   return (
-    <section className="container mx-auto max-w-[1440px] px-5 pb-16 sm:px-6 md:px-12 md:pb-20 lg:px-20">
-      {title && <SectionHeading eyebrow={eyebrow} title={title} description={description} />}
-      <div className={`grid grid-cols-1 gap-x-10 gap-y-10 ${gridCols} xl:gap-x-12`}>
-        {items.map((item, index) => (
-          <Reveal key={item.id ?? item.title} delay={Math.min(index * 0.04, 0.16)}>
-            <article
-              id={item.id}
-              className="group flex h-full scroll-mt-28 flex-col border-t border-white/25 pt-6 transition-colors duration-300 hover:border-[var(--lavi-accent)]"
-            >
-              {item.media && <div className="mb-5 border border-white/10">{item.media}</div>}
-              <div className="mb-4 flex items-baseline justify-between gap-3">
-                {item.eyebrow && (
-                  <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--lavi-accent)]">
-                    {item.eyebrow}
-                  </p>
-                )}
-                {item.metric && (
-                  <p
-                    className="font-mono text-2xl font-semibold leading-none text-white"
-                    style={{ fontVariantNumeric: "tabular-nums" }}
-                  >
-                    {item.metric}
-                  </p>
-                )}
-              </div>
-              <h3 className="mb-1 font-serif text-xl font-semibold leading-tight tracking-tight text-white lg:text-2xl">
-                {item.title}
-              </h3>
-              {item.metricLabel && <p className="mb-4 text-xs text-white/55">{item.metricLabel}</p>}
-              {item.body && <p className="mb-4 text-sm leading-relaxed text-white/80 lg:text-base">{item.body}</p>}
-              {item.rows && (
-                <div className="mt-auto space-y-3 text-sm lg:text-base">
-                  {item.rows.map((row) => (
-                    <p
-                      key={row.label}
-                      className={row.highlight ? "border-t border-white/15 pt-3 text-white" : "text-white/85"}
-                    >
-                      <span
-                        className={`mr-2 font-mono text-xs font-semibold uppercase tracking-[0.14em] ${
-                          row.highlight ? "text-[var(--lavi-accent)]" : "text-white/55"
-                        }`}
-                      >
-                        {row.label}
-                      </span>
-                      {row.href ? (
-                        <a
-                          href={row.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="underline decoration-white/30 underline-offset-4 transition-colors hover:text-white hover:decoration-[var(--lavi-accent)]"
-                        >
-                          {row.text}
-                          <span className="sr-only"> (se abre en una pestaña nueva)</span>
-                        </a>
-                      ) : (
-                        row.text
-                      )}
+    <a href={row.href} target="_blank" rel="noopener noreferrer" className="underline decoration-white/30 underline-offset-4 hover:decoration-white">
+      {row.text}
+      <span className="sr-only"> (se abre en una pestaña nueva)</span>
+    </a>
+  );
+}
+
+/**
+ * A text table. Items with detail rows show their headline row and open to the rest,
+ * so a long page reads as a short list first.
+ */
+export function CardGrid({ eyebrow, title, description, items }: CardGridProps) {
+  return (
+    <Section label={eyebrow}>
+      {title && <SectionHeading title={title} description={description} />}
+      <Reveal>
+        <div className="border-t border-white/15 text-[14px] leading-snug tracking-[-0.01em]">
+          {items.map((item, i) => {
+            const lead = item.rows?.find((row) => row.highlight) ?? item.rows?.[0];
+            const rest = item.rows?.filter((row) => row !== lead) ?? [];
+
+            if (!item.rows) {
+              return (
+                <article key={item.id ?? item.title} id={item.id} className={`scroll-mt-28 border-b border-white/15 py-5 ${ROW_GRID}`}>
+                  <span className="text-white/40" style={{ fontVariantNumeric: "tabular-nums" }}>{index(i)}</span>
+                  <h3 className="col-span-2 font-medium text-white md:col-span-1">{item.title}</h3>
+                  <p className="col-span-2 col-start-2 leading-relaxed text-white/65 md:col-span-1 md:col-start-3">{item.body}</p>
+                </article>
+              );
+            }
+
+            return (
+              <details key={item.id ?? item.title} id={item.id} className="group scroll-mt-28 border-b border-white/15">
+                <summary className={`cursor-pointer list-none py-5 [&::-webkit-details-marker]:hidden ${ROW_GRID}`}>
+                  <span className="text-white/40" style={{ fontVariantNumeric: "tabular-nums" }}>{index(i)}</span>
+                  <h3 className="font-medium text-white">{item.title}</h3>
+                  <span aria-hidden className="justify-self-end text-white/50 transition-transform duration-300 group-open:rotate-45 md:order-last">
+                    +
+                  </span>
+                  {lead && (
+                    <p className="col-span-2 col-start-2 leading-relaxed text-white/65 md:col-span-1 md:col-start-3">
+                      <RowText row={lead} />
                     </p>
+                  )}
+                </summary>
+                <dl className="pb-6">
+                  {rest.map((row) => (
+                    <div key={row.label} className={`py-2.5 ${ROW_GRID}`}>
+                      <dt className="col-span-2 col-start-2 text-white/40 md:col-span-1">{row.label}</dt>
+                      <dd className="col-span-2 col-start-2 leading-relaxed text-white/65 md:col-span-1 md:col-start-3">
+                        <RowText row={row} />
+                      </dd>
+                    </div>
                   ))}
-                </div>
-              )}
-            </article>
-          </Reveal>
-        ))}
-      </div>
-    </section>
+                </dl>
+              </details>
+            );
+          })}
+        </div>
+      </Reveal>
+    </Section>
   );
 }

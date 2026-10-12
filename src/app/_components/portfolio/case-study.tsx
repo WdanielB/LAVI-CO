@@ -21,7 +21,6 @@ export function CaseStudy({ project, index }: { project: Project; index: number 
   ].filter(Boolean) as { label: string; text: string }[];
 
   const meta = [
-    { label: "Cliente", value: project.client },
     { label: "Tipo", value: project.type },
     project.duration && { label: "Duración", value: project.duration },
     project.year && { label: "Año", value: project.year },
@@ -63,7 +62,7 @@ export function CaseStudy({ project, index }: { project: Project; index: number 
                       alt={image.alt}
                       fill
                       sizes="(min-width: 1440px) 760px, (min-width: 1024px) 55vw, 100vw"
-                      className="object-contain p-3 sm:p-5"
+                      className="object-cover object-left-top"
                     />
                   </motion.div>
                 </AnimatePresence>
@@ -71,7 +70,7 @@ export function CaseStudy({ project, index }: { project: Project; index: number 
             </div>
 
             {project.images.length > 1 && (
-              <div className="mt-3 flex gap-3" role="group" aria-label={`Capturas de ${project.client}`}>
+              <div className="mt-3 flex gap-3" role="group" aria-label={`Capturas de ${project.title}`}>
                 {project.images.map((img, i) => (
                   <button
                     key={img.src}
@@ -85,7 +84,7 @@ export function CaseStudy({ project, index }: { project: Project; index: number 
                         : "border-white/10 opacity-55 hover:opacity-90"
                     }`}
                   >
-                    <Image src={img.src} alt="" fill sizes="112px" className="bg-[#232838] object-contain p-1" />
+                    <Image src={img.src} alt="" fill sizes="112px" className="object-cover object-left-top" />
                   </button>
                 ))}
               </div>

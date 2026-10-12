@@ -1,6 +1,7 @@
 import { jsonLd } from "@/lib/site";
-import { SectionHeading } from "./section-heading";
 import { Reveal } from "./reveal";
+import { Section } from "./section";
+import { SectionHeading } from "./section-heading";
 
 type FaqItem = {
   question: string;
@@ -26,27 +27,24 @@ export function Faq({ eyebrow, title, description, items }: FaqProps) {
   };
 
   return (
-    <section className="container mx-auto max-w-[1440px] px-5 pb-16 sm:px-6 md:px-12 md:pb-20 lg:px-20">
+    <Section label={eyebrow}>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(faqJsonLd)} />
-      {title && <SectionHeading eyebrow={eyebrow} title={title} description={description} />}
+      {title && <SectionHeading title={title} description={description} />}
       <Reveal>
-        <div className="max-w-3xl border-t border-white/25">
+        <div className="border-t border-white/15 text-[14px] leading-snug tracking-[-0.01em]">
           {items.map((item) => (
             <details key={item.question} className="group border-b border-white/15">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-sm font-semibold text-white transition-colors hover:text-white/80 [&::-webkit-details-marker]:hidden lg:text-base">
+              <summary className="flex cursor-pointer list-none items-baseline justify-between gap-6 py-5 font-medium text-white [&::-webkit-details-marker]:hidden">
                 {item.question}
-                <span
-                  aria-hidden
-                  className="shrink-0 font-mono text-white/50 transition-transform duration-300 group-open:rotate-45"
-                >
+                <span aria-hidden className="shrink-0 text-white/50 transition-transform duration-300 group-open:rotate-45">
                   +
                 </span>
               </summary>
-              <p className="pb-6 pr-8 text-sm leading-relaxed text-white/75 lg:text-base">{item.answer}</p>
+              <p className="max-w-[58ch] pb-6 leading-relaxed text-white/65">{item.answer}</p>
             </details>
           ))}
         </div>
       </Reveal>
-    </section>
+    </Section>
   );
 }

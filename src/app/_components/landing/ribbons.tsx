@@ -11,10 +11,12 @@ import {
   useTransform,
   useVelocity,
 } from "framer-motion";
+import { Crosshair } from "./blueprint";
 import { usePrefersReducedMotion } from "./motion";
 
-const capabilities = ["Automatización", "Herramientas a medida", "Producto", "I+D"];
-const stack = ["Next.js", "PostgreSQL", "n8n", "Docker", "Hikvision", "Supabase", "React", "Python", "Shopify"];
+// The tools clients ask for most, then what every one of them has in common.
+const tools = ["Control de asistencia", "Inventario", "Punto de venta", "Seguimiento de producción", "Cotizaciones", "Agenda de citas", "Reportes en vivo"];
+const gained = ["Una sola pantalla", "En vivo", "Sin doble digitación", "A tu medida", "Tu equipo lo opera"];
 
 function wrap(min: number, max: number, v: number) {
   const range = max - min;
@@ -66,32 +68,32 @@ function Ribbon({ children, baseVelocity, className = "" }: RibbonProps) {
 
 export function Ribbons() {
   return (
-    <section aria-label="Capacidades y stack" className="relative z-10 -mt-[6vh] py-16 md:py-24">
+    <section aria-label="Herramientas que construimos" className="relative z-10 -mt-[6vh] py-16 md:py-24">
       <div className="-mx-[4vw] -rotate-[2.5deg]">
-        <Ribbon baseVelocity={-2.2} className="border-y border-white/12 bg-[var(--lavi-ink)] py-4 md:py-6">
-          {capabilities.map((item, i) => (
+        <Ribbon baseVelocity={-2} className="border-y border-white/12 bg-[var(--lavi-ink)] py-4 md:py-6">
+          {tools.map((item, i) => (
             <span key={item} className="flex items-center">
               <span
-                className={`font-serif text-[clamp(2.5rem,7.5vw,6.5rem)] font-semibold leading-none tracking-[-0.04em] ${
+                className={`font-serif text-[clamp(2.25rem,7vw,6rem)] font-semibold leading-none tracking-[-0.04em] ${
                   i % 2 === 0 ? "text-outline" : "text-white"
                 }`}
               >
                 {item}
               </span>
-              <span aria-hidden className="mx-[4vw] h-px w-[6vw] bg-[var(--lavi-accent)]" />
+              <Crosshair className="mx-[3.5vw] shrink-0 text-white/35" />
             </span>
           ))}
         </Ribbon>
       </div>
 
       {/* Offset so the two bands meet at the left edge and open into a wedge instead of overlapping. */}
-      <div className="-mx-[4vw] mt-[5vw] hidden rotate-[2.5deg] md:block">
-        <Ribbon baseVelocity={1.6} className="bg-[var(--lavi-accent)] py-3.5">
-          {[...stack, ...stack].map((item, i) => (
-            <span key={i} className="flex items-center font-mono text-[12px] uppercase tracking-[0.3em] text-white">
+      <div className="-mx-[4vw] mt-[7vw] rotate-[2.5deg] md:mt-[5vw]">
+        <Ribbon baseVelocity={1.5} className="bg-[var(--lavi-accent)] py-3 md:py-3.5">
+          {[...gained, ...gained].map((item, i) => (
+            <span key={i} className="flex items-center font-mono text-[11px] uppercase tracking-[0.3em] text-white md:text-[12px]">
               {item}
-              <span aria-hidden className="mx-8 text-white/50">
-                +
+              <span aria-hidden className="mx-6 text-white/55 md:mx-8">
+                →
               </span>
             </span>
           ))}

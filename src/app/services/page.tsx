@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { breadcrumbJsonLd, jsonLd, pageMetadata } from "@/lib/site";
+import { breadcrumbJsonLd, jsonLd, pageMetadata, siteConfig } from "@/lib/site";
 import { SiteChrome } from "../_components/site-chrome";
 import { PageHero } from "../_components/sections/page-hero";
 import { CardGrid } from "../_components/sections/card-grid";
@@ -14,6 +14,27 @@ export const metadata: Metadata = pageMetadata({
   path: "/services",
 });
 
+const servicesJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Servicios de LAVI & CO",
+  itemListElement: [
+    { id: "automatizacion", name: "Automatización de procesos con n8n" },
+    { id: "erp-crm-a-medida", name: "ERP, CRM y portales internos a medida" },
+    { id: "desarrollo-de-producto", name: "Desarrollo de producto y MVP" },
+  ].map((service, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    item: {
+      "@type": "Service",
+      name: service.name,
+      url: `${siteConfig.url}/services#${service.id}`,
+      provider: { "@id": `${siteConfig.url}/#organization` },
+      areaServed: { "@type": "Country", name: "Perú" },
+    },
+  })),
+};
+
 export default function ServicesPage() {
   return (
     <SiteChrome>
@@ -21,6 +42,7 @@ export default function ServicesPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={jsonLd(breadcrumbJsonLd([{ name: "Servicios", path: "/services" }]))}
       />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(servicesJsonLd)} />
       <PageHero
         eyebrow="Servicios"
         title="Software y automatización a la medida de tu operación — no al revés."

@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { HomeView } from "./_components/home-view";
 
 export const metadata: Metadata = {
-  title: { absolute: "LAVI & CO | Automatización y software a medida en Arequipa, Perú" },
+  title: { absolute: "LAVI & CO | Software a medida y automatización en Arequipa, Perú" },
   description:
-    "Diseñamos y desarrollamos los sistemas que tu operación necesita: automatización con n8n, ERP y CRM a medida, MVPs y visibilidad logística. Desde Arequipa para todo LATAM.",
+    "Diseñamos y desarrollamos el software que tu operación necesita: control de asistencia, inventario, seguimiento de producción, automatización con n8n y ERP a medida. Desde Arequipa para todo LATAM.",
   alternates: { canonical: "/" },
 };
 

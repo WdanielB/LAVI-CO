@@ -1,4 +1,5 @@
 import { Reveal } from "./reveal";
+import { ROW_GRID, Section } from "./section";
 import { SectionHeading } from "./section-heading";
 
 type Step = {
@@ -14,45 +15,27 @@ type StepsProps = {
   items: Step[];
 };
 
+/** A process as table rows: order, step and its timing, what happens. */
 export function Steps({ eyebrow, title, description, items }: StepsProps) {
   return (
-    <section className="container mx-auto max-w-[1440px] px-5 pb-16 sm:px-6 md:px-12 md:pb-20 lg:px-20">
-      {title && <SectionHeading eyebrow={eyebrow} title={title} description={description} />}
+    <Section label={eyebrow}>
+      {title && <SectionHeading title={title} description={description} />}
       <Reveal>
-        <ol className="flex flex-col lg:flex-row lg:items-stretch">
-          {items.map((step, index) => (
-            <li key={step.title} className="flex flex-1 flex-col lg:flex-row lg:items-stretch">
-              <div className="flex flex-1 flex-col border-t-2 border-[var(--lavi-accent)] pt-5 lg:pr-2">
-                <div className="mb-3 flex items-center gap-3">
-                  <span
-                    className="font-mono text-3xl font-semibold leading-none text-[var(--lavi-accent)]"
-                    style={{ fontVariantNumeric: "tabular-nums" }}
-                  >
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  {step.meta && (
-                    <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-white/55">
-                      {step.meta}
-                    </span>
-                  )}
-                </div>
-                <h3 className="font-serif text-lg font-semibold leading-tight text-white">{step.title}</h3>
-                <p className="mt-2 max-w-prose text-sm leading-relaxed text-white/75">{step.body}</p>
+        <ol className="border-t border-white/15 text-[14px] leading-snug tracking-[-0.01em]">
+          {items.map((step, i) => (
+            <li key={step.title} className={`border-b border-white/15 py-5 ${ROW_GRID}`}>
+              <span className="text-white/40" style={{ fontVariantNumeric: "tabular-nums" }}>
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <div className="col-span-2 md:col-span-1">
+                <h3 className="font-medium text-white">{step.title}</h3>
+                {step.meta && <p className="mt-1 text-white/40">{step.meta}</p>}
               </div>
-
-              {index < items.length - 1 && (
-                <div
-                  aria-hidden
-                  className="flex items-center justify-center py-4 text-[var(--lavi-accent)]/70 lg:px-4 lg:py-0"
-                >
-                  <span className="text-2xl leading-none lg:hidden">↓</span>
-                  <span className="hidden text-2xl leading-none lg:inline">→</span>
-                </div>
-              )}
+              <p className="col-span-2 col-start-2 leading-relaxed text-white/65 md:col-span-1 md:col-start-3">{step.body}</p>
             </li>
           ))}
         </ol>
       </Reveal>
-    </section>
+    </Section>
   );
 }

@@ -53,11 +53,11 @@ export default function WorkPage() {
 
       <PageHero
         eyebrow="Portafolio"
-        title="Lo que hemos construido para clientes reales."
+        title="Herramientas que hoy están en uso."
         description="Cuatro proyectos, cuatro operaciones distintas. Sin maquetas ni casos inventados: capturas reales de cada sistema."
       />
 
-      <section className="container mx-auto max-w-[1440px] px-5 pb-8 sm:px-6 md:px-12 lg:px-20">
+      <section className="container mx-auto max-w-[1440px] px-5 pb-8 pt-14 sm:px-6 md:px-12 md:pt-20 lg:px-20">
         <Reveal>
           <dl className="mb-12 grid grid-cols-3 gap-4 md:mb-16 md:max-w-3xl">
             {facts.map((fact) => (

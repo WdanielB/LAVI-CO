@@ -20,6 +20,9 @@
 # production
 /build
 
+# datos de formularios de contacto (base local en Excel/CSV)
+/data
+
 # misc
 .DS_Store
 *.pem

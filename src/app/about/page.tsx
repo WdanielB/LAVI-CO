@@ -3,6 +3,7 @@ import { breadcrumbJsonLd, jsonLd, pageMetadata } from "@/lib/site";
 import { SiteChrome } from "../_components/site-chrome";
 import { PageHero } from "../_components/sections/page-hero";
 import { CardGrid } from "../_components/sections/card-grid";
+import { Section } from "../_components/sections/section";
 import { SectionHeading } from "../_components/sections/section-heading";
 import { Reveal } from "../_components/sections/reveal";
 import { CtaBanner } from "../_components/sections/cta-banner";
@@ -52,53 +53,39 @@ export default function AboutPage() {
         ]}
       />
 
-      <section className="container mx-auto max-w-[1440px] px-5 pb-16 sm:px-6 md:px-12 md:pb-20 lg:px-20">
-        <SectionHeading
-          eyebrow="Honestidad primero"
-          title="Para quién somos un buen fit — y para quién no."
-        />
-        <div className="grid grid-cols-1 gap-x-12 gap-y-10 lg:grid-cols-2">
-          <Reveal>
-            <div className="h-full border-t-2 border-[var(--lavi-accent)] pt-6">
-              <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-[var(--lavi-accent)]">
-                Somos un buen fit si
-              </p>
-              <ul className="divide-y divide-white/10">
-                {[
-                  "Tu operación tiene procesos manuales que duelen: horas perdidas, errores repetidos, decisiones tardías.",
-                  "Quieres resultados medibles en semanas y estás dispuesto a empezar por un ciclo acotado.",
-                  "Necesitas que el sistema quede documentado y en manos de tu equipo, no atado a un proveedor.",
-                ].map((item) => (
-                  <li key={item} className="py-3 text-sm leading-relaxed text-white/85 lg:text-base">
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </Reveal>
-          <Reveal delay={0.06}>
-            <div className="h-full border-t border-white/25 pt-6">
-              <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/55">
-                No somos el fit si
-              </p>
-              <ul className="divide-y divide-white/10">
-                {[
-                  "Buscas staffing o cuerpos por hora para un equipo que ya tiene el plan resuelto.",
-                  "Necesitas solo un logo nuevo o una web vitrina sin conexión con la operación.",
-                  "Quieres un proyecto de un año cerrado por adelantado, sin medir nada en el camino.",
-                ].map((item) => (
-                  <li key={item} className="py-3 text-sm leading-relaxed text-white/70 lg:text-base">
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-4 border-t border-white/10 pt-4 text-sm text-white/60">
-                Si es tu caso, igual escríbenos: te recomendamos a quién acudir.
-              </p>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      <Section label="Honestidad primero">
+        <SectionHeading title="Para quién somos un buen fit, y para quién no." />
+        <Reveal>
+          <div className="text-[14px] leading-snug tracking-[-0.01em]">
+            <p className="border-b border-white/15 pb-3 text-white/40">Somos un buen fit si</p>
+            <ul>
+              {[
+                "Tu operación tiene procesos manuales que duelen: horas perdidas, errores repetidos, decisiones tardías.",
+                "Quieres resultados medibles en semanas y estás dispuesto a empezar por un ciclo acotado.",
+                "Necesitas que el sistema quede documentado y en manos de tu equipo, no atado a un proveedor.",
+              ].map((item) => (
+                <li key={item} className="border-b border-white/15 py-4 leading-relaxed md:pr-28 text-white">
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            <p className="mt-12 border-b border-white/15 pb-3 text-white/40">No somos el fit si</p>
+            <ul>
+              {[
+                "Buscas staffing o cuerpos por hora para un equipo que ya tiene el plan resuelto.",
+                "Necesitas solo un logo nuevo o una web vitrina sin conexión con la operación.",
+                "Quieres un proyecto de un año cerrado por adelantado, sin medir nada en el camino.",
+              ].map((item) => (
+                <li key={item} className="border-b border-white/15 py-4 leading-relaxed md:pr-28 text-white/55">
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-5 text-[13px] text-white/40">Si es tu caso, igual escríbenos: te recomendamos a quién acudir.</p>
+          </div>
+        </Reveal>
+      </Section>
 
       <CtaBanner
         title="Una llamada de 20 minutos define si tiene sentido trabajar juntos."

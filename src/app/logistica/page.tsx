@@ -4,6 +4,7 @@ import { SiteChrome } from "../_components/site-chrome";
 import { PageHero } from "../_components/sections/page-hero";
 import { CardGrid } from "../_components/sections/card-grid";
 import { SplitFeature } from "../_components/sections/split-feature";
+import { Section } from "../_components/sections/section";
 import { SectionHeading } from "../_components/sections/section-heading";
 import { Steps } from "../_components/sections/steps";
 import { CtaBanner } from "../_components/sections/cta-banner";
@@ -53,14 +54,11 @@ export default function LogisticaPage() {
         ]}
       />
 
-      <section className="pb-4">
-        <div className="container mx-auto max-w-[1440px] px-5 sm:px-6 md:px-12 lg:px-20">
-          <SectionHeading
-            eyebrow="La solución"
-            title="Qué construimos."
-            description="Tres piezas que se despliegan por separado o en conjunto, siempre sobre los sistemas que ya tienes."
-          />
-        </div>
+      <Section label="La solución">
+        <SectionHeading
+          title="Tres piezas que se despliegan por separado o en conjunto, sobre los sistemas que ya tienes."
+        />
+        <div className="border-t border-white/15">
         <SplitFeature
           eyebrow="01 · Despacho"
           title="Torre de control de despacho"
@@ -91,7 +89,8 @@ export default function LogisticaPage() {
             "Lectura diaria en 5 minutos, sin armar reportes a mano.",
           ]}
         />
-      </section>
+        </div>
+      </Section>
 
       <Steps
         eyebrow="Despliegue"

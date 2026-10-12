@@ -1,74 +1,40 @@
-import Image from "next/image";
 import { Reveal } from "./reveal";
+import { ROW_GRID } from "./section";
 
 type SplitFeatureProps = {
   eyebrow?: string;
   title: string;
   body: string;
   bullets?: string[];
-  media?: { src: string; alt: string };
-  reverse?: boolean;
-  metric?: { value: string; label: string };
 };
 
-export function SplitFeature({ eyebrow, title, body, bullets, media, reverse, metric }: SplitFeatureProps) {
+/** One row of a text table, with its specifics listed under the explanation. Place it inside a Section. */
+export function SplitFeature({ eyebrow, title, body, bullets }: SplitFeatureProps) {
+  // Callers pass eyebrows like "01 · Despacho"; the number leads the row and the word sits under the title.
+  const [number, topic] = eyebrow ? eyebrow.split("·").map((part) => part.trim()) : ["", ""];
+
   return (
-    <div className="container mx-auto max-w-[1440px] px-5 pb-12 sm:px-6 md:px-12 md:pb-16 lg:px-20">
-      <Reveal>
-        <div
-          className={
-            media
-              ? `grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12 ${
-                  reverse ? "lg:[&>*:first-child]:order-2" : ""
-                }`
-              : "max-w-2xl"
-          }
-        >
-          <div>
-            {eyebrow && (
-              <p className="mb-3 font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--lavi-accent)]">
-                {eyebrow}
-              </p>
-            )}
-            <h3 className="font-serif text-xl font-semibold leading-tight tracking-tight text-white sm:text-2xl lg:text-3xl">
-              {title}
-            </h3>
-            <p className="mt-4 text-sm leading-relaxed text-white/80 lg:text-base">{body}</p>
-            {bullets && (
-              <ul className="mt-5 space-y-2.5">
-                {bullets.map((bullet) => (
-                  <li key={bullet} className="flex gap-3 text-sm leading-relaxed text-white/80">
-                    <span aria-hidden className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--lavi-accent)]" />
-                    {bullet}
-                  </li>
-                ))}
-              </ul>
-            )}
-            {metric && (
-              <p className="mt-6 border-t border-white/10 pt-4 text-sm text-white/70">
-                <span
-                  className="mr-3 font-mono text-2xl font-semibold text-white"
-                  style={{ fontVariantNumeric: "tabular-nums" }}
-                >
-                  {metric.value}
-                </span>
-                {metric.label}
-              </p>
-            )}
-          </div>
-          {media && (
-            <div className="overflow-hidden border border-white/10">
-              <Image
-                src={media.src}
-                alt={media.alt}
-                width={960}
-                height={640}
-                className="aspect-[3/2] w-full object-cover"
-              />
-            </div>
+    <Reveal>
+      <article className={`border-b border-white/15 py-5 text-[14px] leading-snug tracking-[-0.01em] ${ROW_GRID}`}>
+        <span className="text-white/40" style={{ fontVariantNumeric: "tabular-nums" }}>{number}</span>
+        <div className="col-span-2 md:col-span-1">
+          <h3 className="font-medium text-white">{title}</h3>
+          {topic && <p className="mt-1 text-white/40">{topic}</p>}
+        </div>
+        <div className="col-span-2 col-start-2 md:col-span-1 md:col-start-3">
+          <p className="leading-relaxed text-white/65">{body}</p>
+          {bullets && (
+            <ul className="mt-4 space-y-1.5 text-white/45">
+              {bullets.map((bullet) => (
+                <li key={bullet} className="flex gap-3 leading-relaxed">
+                  <span aria-hidden>—</span>
+                  {bullet}
+                </li>
+              ))}
+            </ul>
           )}
         </div>
-      </Reveal>
-    </div>
+      </article>
+    </Reveal>
   );
 }

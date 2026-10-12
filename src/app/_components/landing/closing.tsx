@@ -1,11 +1,12 @@
 "use client";
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { mailtoLink } from "@/lib/site";
 import { SheetLabel } from "./blueprint";
-import { Magnetic, MaskText, useDesktop, usePrefersReducedMotion } from "./motion";
+import { CallButton } from "./call-button";
+import { useDesktop, usePrefersReducedMotion } from "./motion";
+import { SimpleHeadline } from "./simple-headline";
 
 // Construction lines running from the sheet corners toward the call to action, in % of the section.
 const convergingLines = [
@@ -41,20 +42,13 @@ export function Closing() {
 
       <div className="relative mx-auto flex w-full max-w-[1440px] flex-col items-center px-5 text-center sm:px-6 md:px-12 lg:px-20">
         <SheetLabel index={5} title="Siguiente paso" className="mb-8 md:mb-10" />
-        <h2 className="font-serif text-[clamp(3rem,12vw,10.5rem)] font-semibold leading-[0.9] tracking-[-0.05em] text-white">
-          <MaskText lines={["Hagámoslo", "simple."]} className="block" />
-        </h2>
+        <SimpleHeadline className="font-serif text-[clamp(3rem,12vw,10.5rem)] font-semibold leading-[0.92] tracking-[-0.05em] text-white" />
 
-        <Magnetic className="mt-12 md:mt-16">
-          <Link
-            href="/contact"
-            className="group flex h-36 w-36 items-center justify-center rounded-full bg-white text-center text-[13px] font-semibold leading-tight text-black transition-colors duration-500 hover:bg-[var(--lavi-accent)] hover:text-white md:h-44 md:w-44"
-          >
-            Agenda
-            <br />
-            una llamada
-          </Link>
-        </Magnetic>
+        <div className="mt-12 md:mt-16">
+          <CallButton />
+        </div>
+
+        <p className="mt-5 font-mono text-[10px] uppercase tracking-[0.28em] text-white/45">20 minutos · sin costo</p>
 
         <a
           href={mailtoLink("Consulta LAVI & CO")}

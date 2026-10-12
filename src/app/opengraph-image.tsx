@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { BrandMark } from "./_components/brand-mark";
 
-export const alt = "LAVI & CO — Automatización y software a medida para operaciones en LATAM";
+export const alt = "LAVI & CO. Software a medida y automatización para empresas, desde Arequipa";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -28,10 +28,10 @@ export default function OpengraphImage() {
 
         <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
           <div style={{ display: "flex", fontSize: 76, fontWeight: 700, lineHeight: 1.02, letterSpacing: "-0.03em", maxWidth: 940 }}>
-            Menos fricción. Más control operativo.
+            Menos fricción. Más control.
           </div>
           <div style={{ display: "flex", fontSize: 30, color: "rgba(243,244,246,0.75)", maxWidth: 900, lineHeight: 1.35 }}>
-            Automatización con n8n, ERP y CRM a medida, MVPs y sistemas logísticos.
+            Software a medida y automatización para tu operación.
           </div>
         </div>
 

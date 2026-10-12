@@ -1,23 +1,19 @@
 import { Reveal } from "./reveal";
 
 type SectionHeadingProps = {
-  eyebrow?: string;
   title: string;
   description?: string;
+  className?: string;
 };
 
-export function SectionHeading({ eyebrow, title, description }: SectionHeadingProps) {
+/** The one large statement of a sheet. The sheet's label lives in the left column, not here. */
+export function SectionHeading({ title, description, className = "mb-10 md:mb-14" }: SectionHeadingProps) {
   return (
-    <Reveal className="mb-8 md:mb-10">
-      {eyebrow && (
-        <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/55">{eyebrow}</p>
-      )}
-      <h2 className="max-w-3xl text-balance font-serif text-2xl font-semibold leading-tight tracking-tight text-white sm:text-3xl lg:text-4xl">
+    <Reveal className={className}>
+      <h2 className="max-w-[26ch] text-balance font-serif text-[clamp(1.5rem,2.7vw,2.4rem)] font-medium leading-[1.12] tracking-[-0.035em] text-white">
         {title}
       </h2>
-      {description && (
-        <p className="mt-4 max-w-3xl text-base leading-relaxed text-white/75">{description}</p>
-      )}
+      {description && <p className="mt-5 max-w-[54ch] text-[15px] leading-relaxed text-white/60">{description}</p>}
     </Reveal>
   );
 }

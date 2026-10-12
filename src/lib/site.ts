@@ -5,7 +5,7 @@ export const siteConfig = {
   url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://lavi.lat").replace(/\/$/, ""),
   locale: "es_PE",
   description:
-    "Estudio de diseño y desarrollo operativo en Arequipa, Perú. Automatización con n8n, ERP y CRM a medida, desarrollo de producto y sistemas logísticos para empresas en LATAM.",
+    "Software a medida y automatización para empresas, desde Arequipa, Perú. Aplicaciones web para asistencia, inventario y producción, automatización con n8n, ERP y CRM a medida y sistemas logísticos.",
   email: "contacto@lavi.lat",
   phone: "+51946689538",
   whatsapp: "https://wa.me/51946689538",

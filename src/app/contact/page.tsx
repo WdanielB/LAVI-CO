@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { breadcrumbJsonLd, jsonLd, mailtoLink, pageMetadata, whatsappLink } from "@/lib/site";
+import { breadcrumbJsonLd, jsonLd, mailtoLink, pageMetadata, siteConfig, whatsappLink } from "@/lib/site";
 import { SiteChrome } from "../_components/site-chrome";
 import { PageHero } from "../_components/sections/page-hero";
-import { SectionHeading } from "../_components/sections/section-heading";
 import { Reveal } from "../_components/sections/reveal";
+import { Section } from "../_components/sections/section";
 import { Steps } from "../_components/sections/steps";
+import { ContactForm } from "./_components/contact-form";
 
 export const metadata: Metadata = pageMetadata({
   title: "Contacto: agenda una llamada de 20 minutos",
@@ -16,6 +17,12 @@ export const metadata: Metadata = pageMetadata({
 const MAILTO = mailtoLink("Consulta LAVI & CO");
 const WHATSAPP = whatsappLink("Hola LAVI & CO, quiero agendar una llamada de 20 minutos para contarles sobre mi operación.");
 
+const helpful = [
+  "El proceso que hoy se siente lento, frágil o demasiado manual.",
+  "Dónde aparece el costo: horas de tu equipo, errores, retrabajos o decisiones tardías.",
+  "Plazos o restricciones que tengamos que respetar.",
+];
+
 export default function ContactPage() {
   return (
     <SiteChrome>
@@ -25,44 +32,49 @@ export default function ContactPage() {
       />
       <PageHero
         eyebrow="Contacto"
-        title="Cuéntanos qué te está frenando. Respondemos en un día hábil."
-        description="No necesitamos un brief perfecto ni una reunión de una hora. Un correo con dos o tres líneas sobre tu operación es suficiente para empezar."
+        title="Cuéntanos qué te está frenando."
+        description="No necesitamos un brief perfecto ni una reunión de una hora. Seis preguntas cortas bastan para empezar, y respondemos en un día hábil."
       />
 
-      <section className="container mx-auto max-w-[1440px] px-5 pb-16 sm:px-6 md:px-12 md:pb-20 lg:px-20">
+      <Section label="Formulario">
         <Reveal>
-          <div className="flex flex-col gap-6 border-y-2 border-[var(--lavi-accent)] py-8 lg:flex-row lg:items-center lg:justify-between lg:py-10">
-            <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/65">Canal directo</p>
-              <p className="mt-2 font-serif text-2xl font-semibold leading-tight text-white lg:text-3xl">
-                contacto@lavi.lat
-              </p>
-              <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/75">
-                Escríbenos y coordinamos una llamada de 20 minutos para entender tu operación. Sin compromiso: si no
-                somos el fit correcto, te lo decimos en esa primera llamada.
-              </p>
-            </div>
-            <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
-              <a
-                href={WHATSAPP}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center justify-center gap-3 bg-white px-6 py-3 text-[13px] font-semibold text-black transition-colors hover:bg-white/90"
-              >
-                <span>Escríbenos por WhatsApp</span>
-                <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
-              </a>
-              <a
-                href={MAILTO}
-                className="group inline-flex items-center justify-center gap-3 border border-white/25 px-6 py-3 text-[13px] font-semibold text-white transition-colors hover:bg-white/5"
-              >
-                <span>Escríbenos por correo</span>
-                <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
-              </a>
-            </div>
-          </div>
+          <ContactForm />
         </Reveal>
-      </section>
+      </Section>
+
+      <Section label="Canal directo">
+        <Reveal>
+          <div className="border-t border-white/15 text-[14px] leading-snug tracking-[-0.01em]">
+            <a
+              href={MAILTO}
+              className="group flex items-baseline justify-between gap-6 border-b border-white/15 py-5 text-white transition-colors hover:text-white/70"
+            >
+              <span className="font-medium">{siteConfig.email}</span>
+              <span aria-hidden>↗</span>
+            </a>
+            <a
+              href={WHATSAPP}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-baseline justify-between gap-6 border-b border-white/15 py-5 text-white transition-colors hover:text-white/70"
+            >
+              <span className="font-medium">WhatsApp</span>
+              <span aria-hidden>↗</span>
+              <span className="sr-only"> (se abre en una pestaña nueva)</span>
+            </a>
+          </div>
+
+          <p className="mt-12 border-b border-white/15 pb-3 text-[14px] text-white/40">Qué nos ayuda a responder mejor</p>
+          <ul className="text-[14px] leading-snug tracking-[-0.01em]">
+            {helpful.map((item) => (
+              <li key={item} className="border-b border-white/15 py-4 leading-relaxed md:pr-28 text-white/65">
+                {item}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-5 text-[13px] text-white/40">Arequipa, Perú. Trabajamos con operaciones en todo LATAM.</p>
+        </Reveal>
+      </Section>
 
       <Steps
         eyebrow="Proceso"
@@ -85,34 +97,6 @@ export default function ContactPage() {
           },
         ]}
       />
-
-      <section className="container mx-auto max-w-[1440px] px-5 pb-20 sm:px-6 md:px-12 md:pb-24 lg:px-20">
-        <SectionHeading
-          eyebrow="Para avanzar más rápido"
-          title="Qué incluir en tu mensaje."
-          description="Con estos tres puntos llegamos a la llamada con la mitad del trabajo hecho. Si no los tienes claros, escríbenos igual."
-        />
-        <Reveal>
-          <ul className="max-w-3xl border-t border-white/25">
-            {[
-              "El proceso que hoy se siente lento, frágil o demasiado manual.",
-              "Dónde aparece el costo: horas de tu equipo, errores, retrabajos o decisiones tardías.",
-              "Plazos o restricciones que tengamos que respetar (temporada alta, cierre contable, migraciones en curso).",
-            ].map((item) => (
-              <li
-                key={item}
-                className="flex gap-4 border-b border-white/15 py-4 text-sm leading-relaxed text-white/80 lg:text-base"
-              >
-                <span aria-hidden className="mt-[7px] h-px w-5 shrink-0 bg-[var(--lavi-accent)]" />
-                {item}
-              </li>
-            ))}
-          </ul>
-          <p className="mt-6 max-w-3xl text-sm text-white/60">
-            Respuesta en 1 día hábil · Arequipa, Perú · Trabajamos con operaciones en todo LATAM.
-          </p>
-        </Reveal>
-      </section>
     </SiteChrome>
   );
 }
