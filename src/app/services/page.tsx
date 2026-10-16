@@ -5,6 +5,7 @@ import { PageHero } from "../_components/sections/page-hero";
 import { CardGrid } from "../_components/sections/card-grid";
 import { Steps } from "../_components/sections/steps";
 import { Faq } from "../_components/sections/faq";
+import { LinkList } from "../_components/sections/link-list";
 import { CtaBanner } from "../_components/sections/cta-banner";
 
 export const metadata: Metadata = pageMetadata({
@@ -19,16 +20,17 @@ const servicesJsonLd = {
   "@type": "ItemList",
   name: "Servicios de LAVI & CO",
   itemListElement: [
-    { id: "automatizacion", name: "Automatización de procesos con n8n" },
-    { id: "erp-crm-a-medida", name: "ERP, CRM y portales internos a medida" },
-    { id: "desarrollo-de-producto", name: "Desarrollo de producto y MVP" },
+    { path: "/services/automatizacion-n8n", name: "Automatización de procesos con n8n" },
+    { path: "/services/erp-crm-a-medida", name: "ERP, CRM y portales internos a medida" },
+    { path: "/services/desarrollo-mvp", name: "Desarrollo de producto y MVP" },
+    { path: "/logistica", name: "Automatización logística y control de despacho" },
   ].map((service, index) => ({
     "@type": "ListItem",
     position: index + 1,
     item: {
       "@type": "Service",
       name: service.name,
-      url: `${siteConfig.url}/services#${service.id}`,
+      url: `${siteConfig.url}${service.path}`,
       provider: { "@id": `${siteConfig.url}/#organization` },
       areaServed: { "@type": "Country", name: "Perú" },
     },
@@ -135,6 +137,17 @@ export default function ServicesPage() {
               },
             ],
           },
+        ]}
+      />
+
+      <LinkList
+        eyebrow="En detalle"
+        title="Cada servicio, con casos de uso y preguntas frecuentes."
+        items={[
+          { href: "/services/automatizacion-n8n", title: "Automatización de procesos con n8n" },
+          { href: "/services/erp-crm-a-medida", title: "ERP y CRM a medida" },
+          { href: "/services/desarrollo-mvp", title: "Desarrollo de MVP y producto digital" },
+          { href: "/logistica", title: "Automatización logística y control de despacho" },
         ]}
       />
 

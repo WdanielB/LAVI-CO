@@ -39,9 +39,9 @@ export function SiteFooter() {
           <nav aria-label="Servicios">
             <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/55">Servicios</p>
             <div className="flex flex-col gap-2.5 text-sm text-white/80">
-              <Link href="/services#automatizacion" className="transition-colors hover:text-white">Automatización con n8n</Link>
-              <Link href="/services#erp-crm-a-medida" className="transition-colors hover:text-white">ERP y CRM a medida</Link>
-              <Link href="/services#desarrollo-de-producto" className="transition-colors hover:text-white">Desarrollo de MVP</Link>
+              <Link href="/services/automatizacion-n8n" className="transition-colors hover:text-white">Automatización con n8n</Link>
+              <Link href="/services/erp-crm-a-medida" className="transition-colors hover:text-white">ERP y CRM a medida</Link>
+              <Link href="/services/desarrollo-mvp" className="transition-colors hover:text-white">Desarrollo de MVP</Link>
               <Link href="/logistica" className="transition-colors hover:text-white">Automatización logística</Link>
             </div>
           </nav>

@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import type { Project } from "@/lib/projects";
+import { siteDomain, type Project } from "@/lib/projects";
 import { whatsappLink } from "@/lib/site";
 import { Reveal } from "../sections/reveal";
 
@@ -159,6 +160,13 @@ export function CaseStudy({ project, index }: { project: Project; index: number 
               <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
               <span className="sr-only"> (WhatsApp, se abre en una pestaña nueva)</span>
             </a>
+            <Link
+              href={`/work/${project.slug}`}
+              className="group inline-flex items-center gap-2 text-[13px] font-semibold text-white/75 underline decoration-white/30 underline-offset-4 transition-colors hover:text-white hover:decoration-[var(--lavi-accent)]"
+            >
+              Ver caso completo
+              <span className="sr-only">: {project.title}</span>
+            </Link>
             {project.url && (
               <a
                 href={project.url}
@@ -166,7 +174,7 @@ export function CaseStudy({ project, index }: { project: Project; index: number 
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2 text-[13px] font-semibold text-white/75 underline decoration-white/30 underline-offset-4 transition-colors hover:text-white hover:decoration-[var(--lavi-accent)]"
               >
-                Visitar {project.frameLabel}
+                Visitar {siteDomain(project.url)}
                 <span aria-hidden>↗</span>
                 <span className="sr-only"> (se abre en una pestaña nueva)</span>
               </a>

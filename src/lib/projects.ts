@@ -2,6 +2,12 @@ export type ProjectImage = { src: string; alt: string };
 
 export type Project = {
   id: string;
+  /** URL segment of the case page: /work/[slug]. */
+  slug: string;
+  metaTitle: string;
+  metaDescription: string;
+  /** Slug of the service in `services.ts` this case belongs to. */
+  serviceSlug: string;
   sector: string;
   type: string;
   title: string;
@@ -19,10 +25,15 @@ export type Project = {
   images: ProjectImage[];
 };
 
-/** Real projects, described by the tool that was built. Client names are left out on purpose. Source: PROYECTOS.md. */
+/** Real projects, described by the tool that was built. A client is only identified where it has a public site in `url`. */
 export const projects: Project[] = [
   {
     id: "case-maservit",
+    slug: "control-de-asistencia-hikvision",
+    metaTitle: "Control de asistencia con Hikvision: caso real",
+    metaDescription:
+      "Web app de control de asistencia integrada con dispositivos Hikvision y desplegada en Docker en el servidor de una metalmecánica. Entregada en 1 semana.",
+    serviceSlug: "erp-crm-a-medida",
     sector: "Metalmecánica",
     type: "Web app + integración Hikvision",
     title: "Control de asistencia con integración Hikvision",
@@ -34,11 +45,17 @@ export const projects: Project[] = [
     stack: ["Next.js", "PostgreSQL", "Docker", "Hikvision"],
     duration: "1 semana",
     year: "2026",
+    url: "https://maservit.com.pe",
     frameLabel: "Servidor interno del cliente",
     images: [{ src: "/media/herramientas/asistencia.webp", alt: "Historial de marcaciones con filtros por trabajador, tipo y estado" }],
   },
   {
     id: "case-vitora",
+    slug: "tienda-online-yape",
+    metaTitle: "Tienda online con pago por Yape: caso real",
+    metaDescription:
+      "Tienda en línea para una florería, construida sobre Shopify con pasarela de pago Yape integrada. Entregada en 30 días por LAVI & CO.",
+    serviceSlug: "desarrollo-mvp",
     sector: "Florería",
     type: "E-commerce",
     title: "Tienda en línea con pago por Yape",
@@ -48,11 +65,17 @@ export const projects: Project[] = [
     stack: ["Shopify", "Yape"],
     duration: "30 días",
     year: "2025",
-    frameLabel: "Tienda en línea",
+    url: "https://vitora.pe",
+    frameLabel: "vitora.pe",
     images: [{ src: "/media/herramientas/tienda.webp", alt: "Portada de una tienda en línea de flores" }],
   },
   {
     id: "case-barandas",
+    slug: "seguimiento-de-produccion",
+    metaTitle: "Seguimiento de producción en tiempo real: caso real",
+    metaDescription:
+      "App web que reemplazó un Excel compartido: el estado de fabricación de cada orden, por etapa y en tiempo real, para una metalmecánica. Entregada en 1 semana.",
+    serviceSlug: "erp-crm-a-medida",
     sector: "Metalmecánica",
     type: "App de producción",
     title: "Seguimiento de fabricación en tiempo real",
@@ -72,6 +95,11 @@ export const projects: Project[] = [
   },
   {
     id: "case-mentalabs",
+    slug: "mvp-panel-clinico",
+    metaTitle: "MVP de panel clínico para psicólogos: caso real",
+    metaDescription:
+      "MVP tipo ERP para una startup de psicología: panel de especialistas con pacientes, agenda y evaluaciones, construido con Next.js y Supabase.",
+    serviceSlug: "desarrollo-mvp",
     sector: "Psicología",
     type: "MVP · ERP",
     title: "Panel clínico: el primer producto de una startup",
@@ -86,3 +114,12 @@ export const projects: Project[] = [
     ],
   },
 ];
+
+/** "https://www.example.pe/" -> "example.pe", for link labels. */
+export function siteDomain(url: string) {
+  return new URL(url).hostname.replace(/^www\./, "");
+}
+
+export function getProject(slug: string) {
+  return projects.find((project) => project.slug === slug);
+}

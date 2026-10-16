@@ -7,27 +7,31 @@ import { GridLines, SheetLabel } from "./blueprint";
 import { Icon, type IconName } from "./icons";
 import { MaskText, easeExpo, useFinePointer } from "./motion";
 
-const services: { title: string; approach: string; examples: string[]; icon: IconName }[] = [
+const services: { title: string; href: string; approach: string; examples: string[]; icon: IconName }[] = [
   {
     title: "Automatizaciones",
+    href: "/services/automatizacion-n8n",
     approach: "Lo que tu equipo copia, concilia o responde a mano pasa a correr solo.",
     examples: ["Avisos por WhatsApp", "Conciliaciones", "Reportes diarios"],
     icon: "cycle",
   },
   {
     title: "Herramientas a medida",
+    href: "/services/erp-crm-a-medida",
     approach: "Una pantalla por proceso, hecha para cómo trabaja tu operación.",
     examples: ["Asistencia", "Pedidos e inventario", "Seguimiento de producción"],
     icon: "grid",
   },
   {
     title: "Desarrollo de producto",
+    href: "/services/desarrollo-mvp",
     approach: "De la idea a un primer producto que la gente ya puede usar.",
     examples: ["MVP", "Tiendas en línea", "Plataformas web"],
     icon: "rocket",
   },
   {
     title: "I+D",
+    href: "/services",
     approach: "Prototipos para probar una idea antes de invertir en ella.",
     examples: ["Prototipos", "Pruebas con datos reales", "Validación"],
     icon: "flask",
@@ -79,7 +83,7 @@ export function ServicesIndex() {
                   transition={{ duration: 0.8, ease: easeExpo }}
                   className="absolute -bottom-px left-0 h-px w-full origin-left bg-[var(--lavi-accent)]"
                 />
-                <Link href="/services" className="grid grid-cols-[1fr_auto] items-start gap-x-4 py-8 md:grid-cols-[6rem_1fr_auto] md:py-10">
+                <Link href={service.href} className="grid grid-cols-[1fr_auto] items-start gap-x-4 py-8 md:grid-cols-[6rem_1fr_auto] md:py-10">
                   <span
                     className={`col-span-2 mb-4 font-mono text-[10px] tracking-[0.28em] transition-colors duration-500 md:col-span-1 md:mb-0 md:pt-4 ${
                       isActive ? "text-white" : "text-white/40"

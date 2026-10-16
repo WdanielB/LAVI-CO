@@ -30,10 +30,11 @@ const portfolioJsonLd = {
   itemListElement: projects.map((project, index) => ({
     "@type": "ListItem",
     position: index + 1,
-    url: `${siteConfig.url}/work#${project.id}`,
+    url: `${siteConfig.url}/work/${project.slug}`,
     item: {
       "@type": "CreativeWork",
       name: project.title,
+      url: `${siteConfig.url}/work/${project.slug}`,
       description: project.summary,
       image: `${siteConfig.url}${project.images[0].src}`,
       creator: { "@id": `${siteConfig.url}/#organization` },

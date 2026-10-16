@@ -13,7 +13,7 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "LAVI & CO | Software a medida y automatización en Arequipa, Perú",
+    default: "Software a medida y automatización en Arequipa | LAVI & CO",
     template: "%s | LAVI & CO",
   },
   description: siteConfig.description,
@@ -36,18 +36,17 @@ export const metadata: Metadata = {
   creator: siteConfig.name,
   publisher: siteConfig.name,
   category: "technology",
-  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: siteConfig.locale,
     url: "/",
     siteName: siteConfig.name,
-    title: "LAVI & CO | Software a medida y automatización en Arequipa",
+    title: "Software a medida y automatización en Arequipa | LAVI & CO",
     description: siteConfig.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: "LAVI & CO | Software a medida y automatización en Arequipa",
+    title: "Software a medida y automatización en Arequipa | LAVI & CO",
     description: siteConfig.description,
   },
   robots: {
@@ -56,6 +55,8 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
   },
   formatDetection: { telephone: false },
+  // Search Console "HTML tag" verification; unset when the property is verified by DNS.
+  verification: { google: process.env.GOOGLE_SITE_VERIFICATION },
 };
 
 export const viewport: Viewport = {

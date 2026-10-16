@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { breadcrumbJsonLd, jsonLd, pageMetadata } from "@/lib/site";
+import { breadcrumbJsonLd, jsonLd, pageMetadata, siteConfig } from "@/lib/site";
 import { SiteChrome } from "../_components/site-chrome";
 import { PageHero } from "../_components/sections/page-hero";
 import { CardGrid } from "../_components/sections/card-grid";
@@ -9,12 +9,29 @@ import { SectionHeading } from "../_components/sections/section-heading";
 import { Steps } from "../_components/sections/steps";
 import { CtaBanner } from "../_components/sections/cta-banner";
 
+const DESCRIPTION =
+  "Sistemas para operaciones logísticas y de planta: torre de control de despacho, reposición automática por reglas y trazabilidad de punta a punta.";
+
 export const metadata: Metadata = pageMetadata({
   title: "Automatización logística y control de despacho",
-  description:
-    "Sistemas para operaciones logísticas y de planta: torre de control de despacho, reposición automática por reglas y trazabilidad de punta a punta.",
+  description: DESCRIPTION,
   path: "/logistica",
 });
+
+const serviceJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": `${siteConfig.url}/logistica#service`,
+  name: "Automatización logística y control de despacho",
+  serviceType: "Automatización logística",
+  description: DESCRIPTION,
+  url: `${siteConfig.url}/logistica`,
+  provider: { "@id": `${siteConfig.url}/#organization` },
+  areaServed: [
+    { "@type": "City", name: "Arequipa" },
+    { "@type": "Country", name: "Perú" },
+  ],
+};
 
 export default function LogisticaPage() {
   return (
@@ -23,6 +40,7 @@ export default function LogisticaPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={jsonLd(breadcrumbJsonLd([{ name: "Logística", path: "/logistica" }]))}
       />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(serviceJsonLd)} />
       <PageHero
         eyebrow="Servicio B2B · Automatización logística"
         title="Menos quiebres de stock, despachos a tiempo y trazabilidad de punta a punta."

@@ -18,7 +18,7 @@ type Work = {
   name: string;
   sector: string;
   line: string;
-  caseId: string;
+  slug: string;
   image: string;
   alt: string;
 };
@@ -29,7 +29,7 @@ const works: Work[] = [
     name: "Control de asistencia",
     sector: "Metalmecánica",
     line: "Marcaciones desde las cámaras de planta, con historial y reportes.",
-    caseId: "case-maservit",
+    slug: "control-de-asistencia-hikvision",
     image: "/media/herramientas/asistencia.webp",
     alt: "Historial de marcaciones con filtros por trabajador, tipo y estado",
   },
@@ -37,7 +37,7 @@ const works: Work[] = [
     name: "Tienda en línea",
     sector: "Florería",
     line: "Catálogo, carrito y pago por Yape.",
-    caseId: "case-vitora",
+    slug: "tienda-online-yape",
     image: "/media/herramientas/tienda.webp",
     alt: "Portada de una tienda en línea de flores",
   },
@@ -45,7 +45,7 @@ const works: Work[] = [
     name: "Seguimiento de fabricación",
     sector: "Metalmecánica",
     line: "Cada orden por etapa, en tiempo real.",
-    caseId: "case-barandas",
+    slug: "seguimiento-de-produccion",
     image: "/media/herramientas/fabricacion.webp",
     alt: "Diagrama Gantt de órdenes por etapa: cortado, armado, soldadura, arenado y pintado",
   },
@@ -53,7 +53,7 @@ const works: Work[] = [
     name: "Panel clínico",
     sector: "Psicología",
     line: "Pacientes, agenda y evaluaciones en un solo lugar.",
-    caseId: "case-mentalabs",
+    slug: "mvp-panel-clinico",
     image: "/media/herramientas/panel-clinico.webp",
     alt: "Panel de especialista con pacientes activos y exámenes pendientes",
   },
@@ -80,7 +80,7 @@ function Caption({ work, index }: { work: Work; index: number }) {
 function Plate({ work, index, drift, onHover }: { work: Work; index: number; drift: MotionValue<string>; onHover: (index: number | null) => void }) {
   return (
     <Link
-      href={`/work#${work.caseId}`}
+      href={`/work/${work.slug}`}
       onMouseEnter={() => onHover(index)}
       onMouseLeave={() => onHover(null)}
       className="group block w-[58vw] max-w-[980px] shrink-0 cursor-none"
@@ -166,7 +166,7 @@ function HorizontalCases() {
             <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-white/50">04 herramientas · en uso real</p>
           </div>
           {works.map((work, i) => (
-            <Plate key={work.caseId} work={work} index={i} drift={drift} onHover={setHovered} />
+            <Plate key={work.slug} work={work} index={i} drift={drift} onHover={setHovered} />
           ))}
         </motion.div>
 
@@ -230,7 +230,7 @@ function StackCard({ work, index, progress, pinned }: { work: Work; index: numbe
       className={`${pinned ? "sticky origin-top" : ""} mb-6 last:mb-0`}
     >
       <Link
-        href={`/work#${work.caseId}`}
+        href={`/work/${work.slug}`}
         className="relative block overflow-hidden border border-white/12 bg-[#0f141c] p-4 pb-6 sm:p-6"
       >
         <div className="relative aspect-[5/3] overflow-hidden bg-[var(--lavi-ink)]">
@@ -264,7 +264,7 @@ function StackCases({ pinned }: { pinned: boolean }) {
       </h2>
       <div ref={listRef} className={pinned ? "" : "grid gap-6 lg:grid-cols-2"}>
         {works.map((work, i) => (
-          <StackCard key={work.caseId} work={work} index={i} progress={scrollYProgress} pinned={pinned} />
+          <StackCard key={work.slug} work={work} index={i} progress={scrollYProgress} pinned={pinned} />
         ))}
       </div>
     </section>

@@ -138,6 +138,15 @@ export function Hero({ ready }: { ready: boolean }) {
               <MaskText lines={["Menos fricción.", "Más control."]} show={ready} delay={0.15} className="block" />
             </h1>
 
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+              transition={{ duration: 1.2, delay: 0.6, ease }}
+              className="mt-6 max-w-[38ch] text-[15px] leading-relaxed text-white/75 md:mt-8 md:text-lg"
+            >
+              Software a medida y automatización para empresas, desde Arequipa, Perú.
+            </motion.p>
+
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={ready ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
