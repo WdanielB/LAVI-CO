@@ -15,11 +15,9 @@ export const metadata: Metadata = pageMetadata({
   path: "/work",
 });
 
-const sectors = new Set(projects.map((p) => p.sector));
-
 const facts = [
-  { value: String(projects.length), label: "proyectos entregados" },
-  { value: String(sectors.size), label: "sectores distintos" },
+  { value: "+10", label: "proyectos entregados" },
+  { value: "+4", label: "sectores distintos" },
   { value: "1 sem.", label: "entrega más rápida" },
 ];
 
@@ -55,7 +53,7 @@ export default function WorkPage() {
       <PageHero
         eyebrow="Portafolio"
         title="Herramientas que hoy están en uso."
-        description="Cuatro proyectos, cuatro operaciones distintas. Sin maquetas ni casos inventados: capturas reales de cada sistema."
+        description="Más de 10 proyectos entregados; aquí algunos. Sin maquetas ni casos inventados: capturas reales de cada sistema."
       />
 
       <section className="container mx-auto max-w-[1440px] px-5 pb-8 pt-14 sm:px-6 md:px-12 md:pt-20 lg:px-20">

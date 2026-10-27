@@ -163,7 +163,7 @@ function HorizontalCases() {
             <h2 className="font-serif text-[clamp(3rem,5.6vw,6rem)] font-semibold leading-[0.92] tracking-[-0.045em] text-white">
               <MaskText lines={["Proyectos", "entregados."]} className="block" />
             </h2>
-            <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-white/50">04 herramientas · en uso real</p>
+            <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-white/50">+10 proyectos entregados · aquí algunos</p>
           </div>
           {works.map((work, i) => (
             <Plate key={work.slug} work={work} index={i} drift={drift} onHover={setHovered} />
@@ -259,9 +259,10 @@ function StackCases({ pinned }: { pinned: boolean }) {
   return (
     <section id="work" className="relative mx-auto w-full max-w-[1440px] px-5 py-24 sm:px-6 md:px-12 lg:px-20">
       <SheetLabel index={3} title="Portafolio" className="mb-6" />
-      <h2 className="mb-12 font-serif text-[clamp(2.5rem,12vw,5rem)] font-semibold leading-[0.92] tracking-[-0.045em] text-white">
+      <h2 className="font-serif text-[clamp(2.5rem,12vw,5rem)] font-semibold leading-[0.92] tracking-[-0.045em] text-white">
         <MaskText lines={["Proyectos", "entregados."]} className="block" />
       </h2>
+      <p className="mb-12 mt-5 font-mono text-[10px] uppercase tracking-[0.28em] text-white/50">+10 proyectos entregados · aquí algunos</p>
       <div ref={listRef} className={pinned ? "" : "grid gap-6 lg:grid-cols-2"}>
         {works.map((work, i) => (
           <StackCard key={work.slug} work={work} index={i} progress={scrollYProgress} pinned={pinned} />

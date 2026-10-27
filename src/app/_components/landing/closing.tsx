@@ -1,50 +1,23 @@
 "use client";
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
 import { mailtoLink } from "@/lib/site";
 import { SheetLabel } from "./blueprint";
 import { CallButton } from "./call-button";
 import { useDesktop, usePrefersReducedMotion } from "./motion";
 import { SimpleHeadline } from "./simple-headline";
-
-// Construction lines running from the sheet corners toward the call to action, in % of the section.
-const convergingLines = [
-  { x1: "0%", y1: "0%", x2: "34%", y2: "40%" },
-  { x1: "100%", y1: "0%", x2: "66%", y2: "40%" },
-  { x1: "0%", y1: "100%", x2: "34%", y2: "62%" },
-  { x1: "100%", y1: "100%", x2: "66%", y2: "62%" },
-];
+import { TypedBenefits } from "./typed-benefits";
 
 export function Closing() {
-  const ref = useRef<HTMLElement>(null);
-  const prefersReducedMotion = usePrefersReducedMotion();
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "center center"] });
-  const pathLength = useTransform(scrollYProgress, [0.15, 1], [0, 1]);
-
   return (
-    <section
-      id="contact"
-      ref={ref}
-      className="relative flex min-h-[100dvh] items-center overflow-hidden border-t border-white/10 py-28"
-    >
-      <svg aria-hidden fill="none" className="pointer-events-none absolute inset-0 h-full w-full text-white/15">
-        {convergingLines.map((line) => (
-          <motion.line
-            key={line.x1 + line.y1}
-            {...line}
-            stroke="currentColor"
-            strokeWidth="1"
-            style={{ pathLength: prefersReducedMotion ? 1 : pathLength }}
-          />
-        ))}
-      </svg>
-
+    <section id="contact" className="relative flex min-h-[100dvh] items-center overflow-hidden border-t border-white/10 py-28">
       <div className="relative mx-auto flex w-full max-w-[1440px] flex-col items-center px-5 text-center sm:px-6 md:px-12 lg:px-20">
         <SheetLabel index={5} title="Siguiente paso" className="mb-8 md:mb-10" />
         <SimpleHeadline className="font-serif text-[clamp(3rem,12vw,10.5rem)] font-semibold leading-[0.92] tracking-[-0.05em] text-white" />
 
-        <div className="mt-12 md:mt-16">
+        <TypedBenefits className="mt-8 min-h-[3em] max-w-xl text-lg leading-snug text-white/80 md:mt-10 md:min-h-[1.5em] md:text-2xl" />
+
+        <div className="mt-8 md:mt-10">
           <CallButton />
         </div>
 
